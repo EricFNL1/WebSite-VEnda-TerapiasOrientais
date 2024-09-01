@@ -14,7 +14,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="icon" href="img/logoF.png" type="image/x-icon" loading="lazy">
-
 </head>
 <body>
 
@@ -38,8 +37,23 @@
             <a class="nav-link" href="#contact">Contato</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('agendamentos') }}">Agendamentos</a>
+            <a class="nav-link" href="{{ route('appointments') }}">Agendamentos</a>
           </li>
+
+          <!-- Verificação de Autenticação -->
+          @guest
+            <li class="nav-item">
+              <a class="btn btn-link" href="{{ route('login') }}">Entrar</a>
+            </li>
+          @else
+            <li class="nav-item">
+              <!-- Botão de Logout -->
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-link">Sair</button>
+              </form>
+            </li>
+          @endguest
         </ul>
       </div>
     </div>
@@ -152,9 +166,9 @@
   <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+  <script>
+      AOS.init();
+  </script>
 
 </body>
 </html>

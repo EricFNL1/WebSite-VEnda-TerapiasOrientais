@@ -79,14 +79,6 @@
     font-family: 'Lora', serif;
   }
 
-  .btn {
-    transition: all 0.3s ease;
-  }
-  
-  .btn:hover {
-    background-color: #ffd700; /* cor de destaque */
-    color: #000;
-  }
 
 
   #contact {
