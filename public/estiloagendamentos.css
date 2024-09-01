@@ -1,0 +1,50 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #f4f4f9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', serif;
+    color: #3b3b3b;
+}
+
+.navbar {
+    border-bottom: 2px solid #e3e3e3;
+    background-color: #ffffff;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #333333 !important;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+.btn-primary {
+    background-color: #d4af37;
+    border-color: #d4af37;
+}
+
+.btn-primary:hover {
+    background-color: #b3862b;
+    border-color: #b3862b;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}

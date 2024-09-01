@@ -7,7 +7,7 @@ use App\Http\Controllers\AppointmentController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index'); // Nomeie a rota como 'index'
 
 Route::get('/agendamentos', [PageController::class, 'agendamentos'])->name('agendamentos');
 

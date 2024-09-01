@@ -37,7 +37,7 @@
             <a class="nav-link" href="#contact">Contato</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('appointments') }}">Agendamentos</a>
+            <a class="nav-link" href="{{ route('appointments.index') }}">Agendamentos</a>
           </li>
 
           <!-- Verificação de Autenticação -->
