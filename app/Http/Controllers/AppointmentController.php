@@ -18,9 +18,22 @@ class AppointmentController extends Controller
     // Exibir o formulário de criação
     public function create()
     {
-        return view('appointments.create');
+        // Definindo os horários de 8h às 19h, de hora em hora
+        $allTimes = [
+            '08:00', '09:00', '10:00', '11:00', '12:00',
+            '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
+        ];
+    
+        // Buscando os horários já reservados no banco de dados para uma data específica
+        $reservedTimes = Appointment::where('appointment_date', request('appointment_date'))
+                            ->pluck('appointment_time')
+                            ->toArray();
+    
+        // Calculando os horários disponíveis
+        $availableTimes = array_diff($allTimes, $reservedTimes);
+    
+        return view('appointments.create', compact('availableTimes', 'reservedTimes'));
     }
-
     // Salvar um novo agendamento
     public function store(Request $request)
     {
@@ -62,4 +75,28 @@ class AppointmentController extends Controller
         $appointment->delete();
         return redirect()->route('appointments.index')->with('success', 'Agendamento cancelado com sucesso!');
     }
+
+    public function updateBackgroundImage(Request $request)
+{
+    $request->validate([
+        'background_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Valida o upload da imagem
+    ]);
+
+    if ($request->hasFile('background_image')) {
+        $image = $request->file('background_image');
+        $imageName = 'background.' . $image->getClientOriginalExtension();
+        $path = public_path('images');
+
+        // Mover a imagem para a pasta public/images
+        $image->move($path, $imageName);
+
+        // Se estiver armazenando no banco de dados, atualizar o caminho da imagem
+        // Por exemplo:
+        // Config::where('key', 'background_image')->update(['value' => 'images/' . $imageName]);
+
+        return redirect()->back()->with('success', 'Imagem de fundo atualizada com sucesso!');
+    }
+
+    return redirect()->back()->with('error', 'Falha ao atualizar a imagem de fundo.');
+}
 }

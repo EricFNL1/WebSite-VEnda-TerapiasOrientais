@@ -17,6 +17,21 @@
 </head>
 <body>
 
+<style>
+.hero {
+    background: url('{{ asset('img/Background.png') }}') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 4px 4px 8px rgb(0, 0, 0);
+    position: relative;
+}
+</style>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark navcor fixed-top">
   <div class="container">
@@ -70,8 +85,8 @@
   <header class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content text-center text-white py-5">
-      <h1 class="display-4">Descubra o Equilíbrio e a Harmonia</h1>
-      <p class="lead">Terapias orientais para restaurar sua saúde e bem-estar</p>
+      <h1 class="display-4 cor">Descubra o Equilíbrio e a Harmonia</h1>
+      <p class="lead textolegenda cor">Terapias orientais para restaurar sua saúde e bem-estar</p>
     </div>
   </header>
 

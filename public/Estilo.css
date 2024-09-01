@@ -1,77 +1,70 @@
-.hero {
-    background: url('img/Background.png') no-repeat center center;
-    background-size: cover;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
-  }
-
-  .hero-overlay {
+.hero-overlay {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
-  }
-    
-  .hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; /* Certifique-se de que o overlay esteja atrás do conteúdo */
+}
+
+.hero-content {
     z-index: 1;
     text-align: center;
-  }
+}
 
-  /* Seção de serviços */
-  .service-card {
+/* Seção de serviços */
+.service-card {
     transition: transform 0.3s;
-  }
+}
 
-  .service-card:hover {
+.service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  /* Seção de depoimentos */
-  .testimonial {
+/* Seção de depoimentos */
+.testimonial {
     background: #f8f9fa;
     padding: 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 1.5rem;
-  }
+}
 
-  /* Estilo do rodapé */
-  footer {
+/* Estilo do rodapé */
+footer {
     background-color: #343a40;
     color: #ffffff;
     padding: 2rem 0;
-  }
+}
 
-    #logo{
+#logo {
     height: 50px;
     width: 50px;
-  }
+}
 
-  .tamanhologo {
+.tamanhologo {
     width: 50px;
     height: 50px;
-  }
+}
 
-  a:link, #cab a:visited {
+a:link, #cab a:visited {
     color: #fdfdff;
     padding: 8px 12px;
-  }
-  
+}
 
-  a:hover {
+a:hover {
     color: #1a1717;
     background: #0c00000e;
     text-decoration: none;
-  }
+}
 
-  .navcor{
+.navcor {
     background-color: #B0C4DE;
-  }
+}
 
-  #textoprimer{
+#textoprimer{
     font-size: 20px;
   }
 

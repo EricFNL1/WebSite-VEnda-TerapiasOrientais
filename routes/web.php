@@ -50,3 +50,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/update-images', [AdminController::class, 'updateImages'])->name('admin.updateImages');
     // Outras rotas de administração
 });
+
+Route::post('/admin/update-background-image', [AdminController::class, 'updateBackgroundImage'])->name('admin.updateBackgroundImage');

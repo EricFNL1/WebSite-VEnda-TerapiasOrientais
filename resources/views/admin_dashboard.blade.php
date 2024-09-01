@@ -12,6 +12,7 @@
             <th>Usuário</th>
             <th>Serviço</th>
             <th>Data</th>
+            <th>Hora</th>
             <th>Status</th>
             <th>Ações</th>
         </tr>
@@ -22,6 +23,7 @@
             <td>{{ $appointment->user->name }}</td>
             <td>{{ $appointment->service }}</td>
             <td>{{ $appointment->appointment_date }}</td>
+            <td>{{ $appointment->appointment_time }}</td>
             <td>{{ $appointment->status }}</td>
             <td>
                 <!-- Botão de Cancelamento com Confirmação -->
@@ -35,17 +37,16 @@
         @endforeach
     </tbody>
 </table>
-    <!-- Seção de Gerenciamento de Imagens -->
-    <h2 class="mt-5 mb-4">Gerenciar Imagens da Página Inicial</h2>
-    <form action="{{ route('admin.updateImages') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-3">
-            <label for="newImage" class="form-label">Escolha uma nova imagem para a página inicial:</label>
-            <input type="file" class="form-control" id="newImage" name="newImage">
-        </div>
-        <button type="submit" class="btn btn-primary">Atualizar Imagem</button>
-    </form>
 
+<h3 class="mt-5">Gerenciar Imagem de Fundo da Página</h3>
+<form method="POST" action="{{ route('admin.updateBackgroundImage') }}" enctype="multipart/form-data">
+    @csrf
+    <div class="mb-4">
+        <label for="background_image" class="form-label">Escolha uma nova imagem para a página inicial:</label>
+        <input type="file" class="form-control" id="background_image" name="background_image" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Atualizar Imagem</button>
+</form>
 </div>
 
 <div class="mb-4 container">
