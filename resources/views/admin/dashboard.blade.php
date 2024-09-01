@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container py-5">
-    <h1 class="text-center mb-4">Você está Logado!</h1>
+    <h1 class="text-center mb-4">Dashboard</h1>
     <p class="lead text-center">Redirecionando para a página inicial...</p>
 </div>
 

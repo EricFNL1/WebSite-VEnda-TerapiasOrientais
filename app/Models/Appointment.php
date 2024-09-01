@@ -13,9 +13,10 @@ class Appointment extends Model
         'user_id',
         'service',
         'appointment_date',
+        'appointment_time',
         'status',
     ];
-
+    
     // Relacionamento com o usuário
     public function user()
     {

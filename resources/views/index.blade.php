@@ -19,45 +19,52 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark navcor fixed-top">
-    <div class="container">
-      <img id="logo" src="img/logoF.png" alt="Logo Terapias Orientais" class="me-2" loading="lazy">
-      <p class="text-white mb-0" id="textoprimer">Terapias Orientais</p>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#services">Serviços</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#testimonials">Depoimentos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('appointments.index') }}">Agendamentos</a>
-          </li>
+  <div class="container">
+    <img id="logo" src="img/logoF.png" alt="Logo Terapias Orientais" class="me-2" loading="lazy">
+    <p class="text-white mb-0" id="textoprimer">Terapias Orientais</p>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Serviços</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#testimonials">Depoimentos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contato</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('appointments.index') }}">Agendamentos</a>
+        </li>
 
-          <!-- Verificação de Autenticação -->
-          @guest
+        <!-- Verificação de Autenticação -->
+        @guest
+          <li class="nav-item">
+            <a class="btn btn-link" href="{{ route('login') }}">Entrar</a>
+          </li>
+        @else
+          <!-- Verificação se o usuário é admin -->
+          @if (Auth::user() && Auth::user()->role === 'admin')
             <li class="nav-item">
-              <a class="btn btn-link" href="{{ route('login') }}">Entrar</a>
+              <a class="nav-link" href="{{ route('admin_dashboard') }}">Painel Admin</a>
             </li>
-          @else
-            <li class="nav-item">
-              <!-- Botão de Logout -->
-              <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="btn btn-link">Sair</button>
-              </form>
-            </li>
-          @endguest
-        </ul>
-      </div>
+          @endif
+
+          <!-- Botão de Logout -->
+          <li class="nav-item">
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="btn btn-link">Sair</button>
+            </form>
+          </li>
+        @endguest
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Header com Imagem de Fundo -->
   <header class="hero">
