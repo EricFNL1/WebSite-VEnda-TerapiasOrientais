@@ -52,3 +52,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/admin/update-background-image', [AdminController::class, 'updateBackgroundImage'])->name('admin.updateBackgroundImage');
+Route::patch('/appointments/{appointment}/update-time', [AppointmentController::class, 'updateTime'])->name('appointments.updateTime');
+

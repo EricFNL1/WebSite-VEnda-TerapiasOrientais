@@ -99,4 +99,23 @@ class AppointmentController extends Controller
 
     return redirect()->back()->with('error', 'Falha ao atualizar a imagem de fundo.');
 }
+
+public function updateTime(Request $request, Appointment $appointment)
+{
+    // Verifique se o usuário é um administrador
+    if (Auth::user()->role !== 'admin') {
+        abort(403); // Acesso negado
+    }
+
+    // Valide o novo horário
+    $request->validate([
+        'appointment_time' => 'required|string'
+    ]);
+
+    // Atualize a hora do agendamento
+    $appointment->appointment_time = $request->appointment_time;
+    $appointment->save();
+
+    return redirect()->route('admin_dashboard')->with('success', 'Horário do agendamento atualizado com sucesso!');
+}
 }

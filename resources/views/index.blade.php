@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="Estilo.css">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Animação.js">
   <link rel="icon" href="img/logoF.png" type="image/x-icon" loading="lazy">
 </head>
 <body>
@@ -99,8 +101,8 @@
           <div class="card service-card border-0 shadow-sm mb-4">
             <div class="card-body">
               <i class="fas fa-spa fa-3x text-primary mb-4"></i>
-              <h5 class="card-title">Acupuntura</h5>
-              <p class="card-text">Utilize técnicas milenares de acupuntura para equilibrar o fluxo de energia no corpo.</p>
+              <h5 class="card-title">Auriculoterapia</h5>
+              <p class="card-text">Auriculoterapia: uma abordagem integral que promove o equilíbrio do corpo e da mente, utilizando pontos específicos da orelha para tratar e prevenir desequilíbrios físicos e emocionais.</p>
             </div>
           </div>
         </div>
@@ -109,22 +111,76 @@
             <div class="card-body">
               <i class="fas fa-leaf fa-3x text-success mb-4"></i>
               <h5 class="card-title">Shiatsu</h5>
-              <p class="card-text">Massagem terapêutica baseada em técnicas japonesas para aliviar tensões.</p>
+              <p class="card-text">Shiatsu: uma terapia manual japonesa que utiliza pressão com os dedos para harmonizar a energia vital, aliviar tensões musculares, reduzir o estresse e promover o bem-estar físico e emocional.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card service-card border-0 shadow-sm mb-4">
             <div class="card-body">
-              <i class="fas fa-hand-holding-heart fa-3x text-danger mb-4"></i>
-              <h5 class="card-title">Reiki</h5>
-              <p class="card-text">Canalização de energia para promover o equilíbrio emocional e espiritual.</p>
+              <i class="fas fa-child fa-3x text-warning mb-4"></i>
+              <h5 class="card-title">Kanrenbuí</h5>
+              <p class="card-text">Kanrenbuí: uma prática terapêutica que utiliza movimentos e posturas específicas para restaurar o fluxo energético, aliviando dores, equilibrando o corpo e promovendo saúde integral e harmonia.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <i class="fas fa-seedling fa-3x text-success mb-4"></i>
+              <h5 class="card-title">Aromaterapia</h5>
+              <p class="card-text">Aromaterapia: uma técnica que utiliza óleos essenciais extraídos de plantas para equilibrar corpo e mente, promovendo relaxamento, alívio do estresse, fortalecimento emocional e bem-estar geral.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <i class="fas fa-lightbulb fa-3x text-info mb-4"></i>
+              <h5 class="card-title">Cromoterapia</h5>
+              <p class="card-text">Cromoterapia: uma terapia que utiliza as cores para harmonizar a energia do corpo, promovendo o equilíbrio físico, emocional e mental, ajudando na recuperação da saúde e na melhoria do bem-estar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <i class="fas fa-band-aid fa-3x text-danger mb-4"></i>
+              <h5 class="card-title">Spiral Taping</h5>
+              <p class="card-text">Spiral Taping: uma técnica terapêutica que utiliza fitas adesivas aplicadas de forma específica na pele para aliviar dores, melhorar a circulação, corrigir a postura e promover o equilíbrio muscular e energético.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+</section> 
+
+  <div id="carouselExampleIndicators" class="carousel slide container" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img width="1000px" height="600px" src="img/carrousel3.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img width="1000px" height="600px" src="img/carrousel4.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img width="1000px" height="600px" src="img/carrousel5.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
   <!-- Seção de Depoimentos -->
   <section id="testimonials" class="py-5 bg-light" data-aos="fade-up">
@@ -191,6 +247,7 @@
   <script>
       AOS.init();
   </script>
+  
 
 </body>
 </html>

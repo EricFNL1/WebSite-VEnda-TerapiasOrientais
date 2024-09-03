@@ -23,7 +23,22 @@
             <td>{{ $appointment->user->name }}</td>
             <td>{{ $appointment->service }}</td>
             <td>{{ $appointment->appointment_date }}</td>
-            <td>{{ $appointment->appointment_time }}</td>
+            <td>
+                <!-- Formulário para alterar a hora -->
+                <form method="POST" action="{{ route('appointments.updateTime', $appointment->id) }}">
+                    @csrf
+                    @method('PATCH')
+                    <select name="appointment_time" class="form-select mb-2" required>
+                        <option selected disabled>Selecione um horário</option>
+                        @foreach (['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'] as $time)
+                            <option value="{{ $time }}" {{ $appointment->appointment_time == $time ? 'selected' : '' }}>
+                                {{ $time }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-warning">Alterar Hora</button>
+                </form>
+            </td>
             <td>{{ $appointment->status }}</td>
             <td>
                 <!-- Botão de Cancelamento com Confirmação -->
@@ -51,5 +66,5 @@
 
 <div class="mb-4 container">
         <a href="{{ route('index') }}" class="btn btn-secondary">Voltar</a>
-    </div>
+</div>
 @endsection

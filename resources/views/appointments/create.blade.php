@@ -16,9 +16,12 @@
                             <label for="service" class="form-label">Serviço</label>
                             <select class="form-select" id="service" name="service" required>
                                 <option selected disabled>Selecione um serviço</option>
-                                <option value="Acupuntura">Acupuntura</option>
+                                <option value="Acupuntura">Auriculoterapia</option>
                                 <option value="Shiatsu">Shiatsu</option>
-                                <option value="Reiki">Reiki</option>
+                                <option value="Kanrenbuí">Kanrenbuí</option>
+                                <option value="Aromaterapia">Aromaterapia</option>
+                                <option value="Cromoterapia">Cromoterapia</option>
+                                <option value="Spiral Taping">Spiral Taping</option>
                             </select>
                         </div>
                         <div class="mb-4">
