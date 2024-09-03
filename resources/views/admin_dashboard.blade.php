@@ -64,28 +64,30 @@
 </form>
 
 <h3 class="mt-5">Gerenciar Imagens do Carrossel</h3>
-<form method="POST" action="{{ route('admin.updateCarouselImages') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('admin.updateCarouselImage') }}" enctype="multipart/form-data">
     @csrf
     <div class="mb-4">
-        <label for="carousel_images" class="form-label">Escolha novas imagens para o carrossel:</label>
-        <input type="file" class="form-control" id="carousel_images" name="carousel_images[]" multiple required>
+        <label for="carousel_image" class="form-label">Escolha uma nova imagem para o carousel:</label>
+        <input type="file" class="form-control" id="carousel_image" name="carousel_image" required>
     </div>
-    <button type="submit" class="btn btn-primary">Atualizar Imagens</button>
+    <button type="submit" class="btn btn-primary">Atualizar Imagem</button>
 </form>
+
 
 <h3 class="mt-5">Gerenciar Imagens do Carrossel</h3>
 <div class="mb-4">
-    @foreach (['carrousel1.jpg', 'carrousel2.jpg', 'carrousel3.jpg', 'carrousel4.jpg', 'carrousel5.jpg'] as $image)
+    @foreach (App\Models\CarouselImage::all() as $image)
         <div class="d-flex align-items-center mb-3">
-            <img src="{{ asset('carousel/' . $image) }}" alt="Imagem Carrossel" width="100" class="me-3">
+            <img src="{{ asset('carousel/' . $image->image_name) }}" alt="Imagem Carrossel" width="100" class="me-3">
             <form method="POST" action="{{ route('admin.removeCarouselImage') }}">
                 @csrf
-                <input type="hidden" name="image_name" value="{{ $image }}">
+                <input type="hidden" name="image_id" value="{{ $image->id }}">
                 <button type="submit" class="btn btn-danger">Remover Imagem</button>
             </form>
         </div>
     @endforeach
 </div>
+
 
 
 </div>

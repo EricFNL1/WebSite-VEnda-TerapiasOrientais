@@ -46,14 +46,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin_dashboard'); // Nomeie a rota corretamente
     Route::post('/admin/update-images', [AdminController::class, 'updateImages'])->name('admin.updateImages');
-    // Outras rotas de administração
+    Route::post('/admin/update-background-image', [AdminController::class, 'updateBackgroundImage'])->name('admin.updateBackgroundImage');
+    Route::post('/admin/update-carousel-image', [AdminController::class, 'updateCarouselImage'])->name('admin.updateCarouselImage');
+    Route::post('/admin/remove-carousel-image', [AdminController::class, 'removeCarouselImage'])->name('admin.removeCarouselImage');
+    
 });
 
-Route::post('/admin/update-background-image', [AdminController::class, 'updateBackgroundImage'])->name('admin.updateBackgroundImage');
 Route::patch('/appointments/{appointment}/update-time', [AppointmentController::class, 'updateTime'])->name('appointments.updateTime');
-Route::post('/admin/update-carousel-images', [AdminController::class, 'updateCarouselImages'])->name('admin.updateCarouselImages');
-Route::post('/admin/remove-carousel-image', [AdminController::class, 'removeCarouselImage'])->name('admin.removeCarouselImage');
-
-
