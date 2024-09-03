@@ -39,4 +39,44 @@ class AdminController extends Controller
 
     return redirect()->route('admin_dashboard')->with('error', 'Nenhuma imagem foi enviada.');
 }
+
+public function updateCarouselImages(Request $request)
+{
+    $request->validate([
+        'carousel_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Valida múltiplas imagens
+    ]);
+
+    if ($request->hasFile('carousel_images')) {
+        foreach ($request->file('carousel_images') as $image) {
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $image->move(public_path('carousel'), $imageName);
+            // Aqui, você pode salvar o nome da imagem no banco de dados, se necessário.
+        }
+    }
+
+    return redirect()->back()->with('success', 'Imagens do carrossel atualizadas com sucesso!');
+}
+
+public function removeCarouselImage(Request $request)
+{
+    $imageName = $request->input('image_name');
+
+    // Caminho para a pasta de imagens com separador de diretório apropriado
+    $imagePath = public_path('carousel' . DIRECTORY_SEPARATOR . $imageName);
+
+    // Verifique se o arquivo existe antes de tentar deletá-lo
+    if (file_exists($imagePath)) {
+        // Tenta deletar o arquivo
+        if (unlink($imagePath)) {
+            return redirect()->back()->with('success', 'Imagem removida com sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Erro ao tentar remover a imagem. Por favor, tente novamente.');
+        }
+    } else {
+        return redirect()->back()->with('error', 'Imagem não encontrada.');
+    }
+}
+
+
+
 }

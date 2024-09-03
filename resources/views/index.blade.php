@@ -15,6 +15,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Animação.js">
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <link rel="icon" href="img/logoF.png" type="image/x-icon" loading="lazy">
 </head>
 <body>
@@ -155,32 +156,37 @@
     </div>
 </section> 
 
-  <div id="carouselExampleIndicators" class="carousel slide container" data-bs-ride="carousel">
+  <<div id="carouselExampleIndicators" class="carousel slide container" data-bs-ride="carousel">
+  <!-- Indicadores Dinâmicos -->
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    @php
+      $images = glob(public_path('carousel') . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+    @endphp
+    @foreach($images as $index => $image)
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : '' }}" aria-label="Slide {{ $index + 1 }}"></button>
+    @endforeach
   </div>
+
+  <!-- Itens do Carrossel Dinâmicos -->
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img width="1000px" height="600px" src="img/carrousel3.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img width="1000px" height="600px" src="img/carrousel4.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img width="1000px" height="600px" src="img/carrousel5.jpg" class="d-block w-100" alt="...">
-    </div>
+    @foreach($images as $index => $image)
+      <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+        <img width="1000px" height="600px" src="{{ asset('carousel/' . basename($image)) }}" class="d-block w-100" alt="Imagem do Carrossel {{ $index + 1 }}">
+      </div>
+    @endforeach
   </div>
+
+  <!-- Controles de Navegação -->
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+    <span class="visually-hidden">Anterior</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+    <span class="visually-hidden">Próximo</span>
   </button>
 </div>
+
 
   <!-- Seção de Depoimentos -->
   <section id="testimonials" class="py-5 bg-light" data-aos="fade-up">

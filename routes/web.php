@@ -53,4 +53,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::post('/admin/update-background-image', [AdminController::class, 'updateBackgroundImage'])->name('admin.updateBackgroundImage');
 Route::patch('/appointments/{appointment}/update-time', [AppointmentController::class, 'updateTime'])->name('appointments.updateTime');
+Route::post('/admin/update-carousel-images', [AdminController::class, 'updateCarouselImages'])->name('admin.updateCarouselImages');
+Route::post('/admin/remove-carousel-image', [AdminController::class, 'removeCarouselImage'])->name('admin.removeCarouselImage');
+
 

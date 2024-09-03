@@ -62,6 +62,32 @@
     </div>
     <button type="submit" class="btn btn-primary">Atualizar Imagem</button>
 </form>
+
+<h3 class="mt-5">Gerenciar Imagens do Carrossel</h3>
+<form method="POST" action="{{ route('admin.updateCarouselImages') }}" enctype="multipart/form-data">
+    @csrf
+    <div class="mb-4">
+        <label for="carousel_images" class="form-label">Escolha novas imagens para o carrossel:</label>
+        <input type="file" class="form-control" id="carousel_images" name="carousel_images[]" multiple required>
+    </div>
+    <button type="submit" class="btn btn-primary">Atualizar Imagens</button>
+</form>
+
+<h3 class="mt-5">Gerenciar Imagens do Carrossel</h3>
+<div class="mb-4">
+    @foreach (['carrousel1.jpg', 'carrousel2.jpg', 'carrousel3.jpg', 'carrousel4.jpg', 'carrousel5.jpg'] as $image)
+        <div class="d-flex align-items-center mb-3">
+            <img src="{{ asset('carousel/' . $image) }}" alt="Imagem Carrossel" width="100" class="me-3">
+            <form method="POST" action="{{ route('admin.removeCarouselImage') }}">
+                @csrf
+                <input type="hidden" name="image_name" value="{{ $image }}">
+                <button type="submit" class="btn btn-danger">Remover Imagem</button>
+            </form>
+        </div>
+    @endforeach
+</div>
+
+
 </div>
 
 <div class="mb-4 container">
