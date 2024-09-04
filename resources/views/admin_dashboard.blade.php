@@ -4,6 +4,17 @@
 <div class="container py-5">
     <h1 class="text-center mb-4">Painel do Administrador</h1>
 
+    <form method="GET" action="{{ route('admin.dashboard') }}" class="mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="date" name="date" class="form-control" value="{{ request('date') }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
+    </div>
+</form>
+
     <!-- Seção de Agendamentos -->
     <h2 class="mb-4">Todos os Agendamentos</h2>
     <table class="table">
@@ -47,11 +58,21 @@
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Cancelar</button>
                 </form>
+                <form method="POST" action="{{ route('appointments.finalize', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja finalizar este agendamento?');" class="d-inline">
+        @csrf
+        @method('PATCH')
+        <button type="submit" class="btn btn-success">Finalizar</button>
+    </form>
             </td>
         </tr>
         @endforeach
     </tbody>
+    <!-- Paginação -->
 </table>
+
+<div class="d-flex justify-content-center mt-4">
+    {{ $appointments->links('pagination::bootstrap-4') }}
+</div>
 
 <h3 class="mt-5">Gerenciar Imagem de Fundo da Página</h3>
 <form method="POST" action="{{ route('admin.updateBackgroundImage') }}" enctype="multipart/form-data">

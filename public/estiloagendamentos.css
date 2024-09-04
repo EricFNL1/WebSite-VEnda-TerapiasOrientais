@@ -49,4 +49,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #0f5132;
 }
 
-
+.tamanhoimg{
+    width: 50px;
+    height: 50px;
+}

@@ -55,3 +55,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::patch('/appointments/{appointment}/update-time', [AppointmentController::class, 'updateTime'])->name('appointments.updateTime');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::patch('appointments/{appointment}/finalize', [AppointmentController::class, 'finalize'])->name('appointments.finalize');

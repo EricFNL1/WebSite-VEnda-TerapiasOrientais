@@ -258,7 +258,7 @@
         <div class="col-md-6">
           <div class="testimonial p-4 bg-white rounded shadow-sm mb-4">
             <p>"A experiência com o Reiki foi transformadora. Senti uma paz que nunca havia experimentado antes!"</p>
-            <p><strong>- Maria A.</strong></p>
+            <p><strong>- Eric Júnior.</strong></p>
           </div>
         </div>
         <div class="col-md-6">

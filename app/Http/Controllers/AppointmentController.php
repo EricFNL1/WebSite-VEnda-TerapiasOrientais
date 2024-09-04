@@ -76,6 +76,24 @@ class AppointmentController extends Controller
         return redirect()->route('appointments.index')->with('success', 'Agendamento cancelado com sucesso!');
     }
 
+    public function finalize($id)
+{
+    // Verifica se o usuário é um administrador
+    if (Auth::user()->role !== 'admin') {
+        return redirect()->route('dashboard')->with('error', 'Acesso negado. Apenas administradores podem finalizar agendamentos.');
+    }
+
+    // Encontre o agendamento pelo ID
+    $appointment = Appointment::findOrFail($id);
+
+    // Marque o agendamento como finalizado
+    $appointment->status = 'Finalizado';
+    $appointment->save();
+
+    // Redireciona de volta com uma mensagem de sucesso
+    return redirect()->route('admin.dashboard')->with('success', 'Agendamento finalizado com sucesso.');
+}
+
     public function updateBackgroundImage(Request $request)
 {
     $request->validate([

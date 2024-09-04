@@ -13,17 +13,30 @@ use App\Models\Appointment;
 class AdminController extends Controller
 {
     // Método para exibir o painel de administração
-    public function index()
+    public function index(Request $request)
     {
+        // Verifica se o usuário é administrador
         if (Auth::user()->role !== 'admin') {
             return redirect()->route('dashboard')->with('error', 'Acesso negado. Apenas administradores podem acessar esta página.');
         }
-
-        $appointments = Appointment::all();
-
+    
+        // Recupera a data da requisição
+        $date = $request->input('date');
+    
+        // Cria uma query para recuperar os agendamentos
+        $appointmentsQuery = Appointment::query();
+    
+        // Aplica o filtro por data se uma data for fornecida
+        if ($date) {
+            $appointmentsQuery->whereDate('appointment_date', $date);
+        }
+    
+        // Aplica a paginação com 5 agendamentos por página
+        $appointments = $appointmentsQuery->paginate(5);
+    
+        // Retorna a visão com os agendamentos filtrados e paginados
         return view('admin_dashboard', compact('appointments'));
     }
-
     // Método para atualizar a imagem de fundo
     public function updateBackgroundImage(Request $request)
     {
