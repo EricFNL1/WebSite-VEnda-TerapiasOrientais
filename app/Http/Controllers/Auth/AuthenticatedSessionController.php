@@ -59,20 +59,5 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
-    public function removeCarouselImage(Request $request)
-{
-    $imageName = $request->input('image_name');
-
-    // Caminho para a pasta de imagens
-    $imagePath = public_path('img/' . $imageName);
-
-    // Verifique se o arquivo existe e o remova
-    if (file_exists($imagePath)) {
-        unlink($imagePath); // Remove o arquivo
-    }
-
-    // Retorne com sucesso ou erro
-    return redirect()->back()->with('success', 'Imagem removida com sucesso!');
-}
-
+    
 }

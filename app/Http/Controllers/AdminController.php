@@ -33,7 +33,8 @@ class AdminController extends Controller
 
             $file->move(public_path('img'), $fileName);
 
-            return redirect()->route('admin.dashboard')->with('success', 'Imagem de fundo atualizada com sucesso!');
+            return redirect()->route('admin_dashboard')->with('success', 'Imagem de fundo atualizada com sucesso!');
+
         }
 
         return redirect()->route('admin.dashboard')->with('error', 'Nenhuma imagem foi enviada.');

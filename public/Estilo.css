@@ -13,6 +13,11 @@
     text-align: center;
 }
 
+.hidden-cards {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
 /* Seção de serviços */
 .service-card {
     transition: transform 0.3s;

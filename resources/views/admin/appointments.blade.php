@@ -29,7 +29,4 @@
     </table>
 </div>
 
-<div class="mb-4 container">
-        <a href="{{ route('index') }}" class="btn btn-secondary">Voltar</a>
-    </div>
 @endsection

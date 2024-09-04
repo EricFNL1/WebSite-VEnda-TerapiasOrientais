@@ -93,70 +93,132 @@
     </div>
   </header>
 
-  <!-- Seção de Serviços -->
   <section id="services" class="py-5" data-aos="fade-up">
-    <div class="container">
-      <h2 class="text-center mb-5">Nossos Serviços</h2>
-      <div class="row text-center">
-        <div class="col-md-4">
-          <div class="card service-card border-0 shadow-sm mb-4">
-            <div class="card-body">
-              <i class="fas fa-spa fa-3x text-primary mb-4"></i>
-              <h5 class="card-title">Auriculoterapia</h5>
-              <p class="card-text">Auriculoterapia: uma abordagem integral que promove o equilíbrio do corpo e da mente, utilizando pontos específicos da orelha para tratar e prevenir desequilíbrios físicos e emocionais.</p>
-            </div>
+  <div class="container">
+    <h2 class="text-center mb-5">Nossos Serviços</h2>
+    <div class="row text-center justify-content-center">
+      <!-- Cartões Visíveis -->
+      <div class="col-md-4">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-spa fa-3x text-primary mb-4"></i>
+            <h5 class="card-title">Auriculoterapia</h5>
+            <p class="card-text">Auriculoterapia: uma abordagem integral que promove o equilíbrio do corpo e da mente, utilizando pontos específicos da orelha para tratar e prevenir desequilíbrios físicos e emocionais.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card service-card border-0 shadow-sm mb-4">
-            <div class="card-body">
-              <i class="fas fa-leaf fa-3x text-success mb-4"></i>
-              <h5 class="card-title">Shiatsu</h5>
-              <p class="card-text">Shiatsu: uma terapia manual japonesa que utiliza pressão com os dedos para harmonizar a energia vital, aliviar tensões musculares, reduzir o estresse e promover o bem-estar físico e emocional.</p>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-leaf fa-3x text-success mb-4"></i>
+            <h5 class="card-title">Shiatsu</h5>
+            <p class="card-text">Shiatsu: uma terapia manual japonesa que utiliza pressão com os dedos para harmonizar a energia vital, aliviar tensões musculares, reduzir o estresse e promover o bem-estar físico e emocional.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card service-card border-0 shadow-sm mb-4">
-            <div class="card-body">
-              <i class="fas fa-child fa-3x text-warning mb-4"></i>
-              <h5 class="card-title">Kanrenbuí</h5>
-              <p class="card-text">Kanrenbuí: uma prática terapêutica que utiliza movimentos e posturas específicas para restaurar o fluxo energético, aliviando dores, equilibrando o corpo e promovendo saúde integral e harmonia.</p>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-child fa-3x text-warning mb-4"></i>
+            <h5 class="card-title">Kanrenbuí</h5>
+            <p class="card-text">Kanrenbuí: uma prática terapêutica que utiliza movimentos e posturas específicas para restaurar o fluxo energético, aliviando dores, equilibrando o corpo e promovendo saúde integral e harmonia.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card service-card border-0 shadow-sm mb-4">
-            <div class="card-body">
-              <i class="fas fa-seedling fa-3x text-success mb-4"></i>
-              <h5 class="card-title">Aromaterapia</h5>
-              <p class="card-text">Aromaterapia: uma técnica que utiliza óleos essenciais extraídos de plantas para equilibrar corpo e mente, promovendo relaxamento, alívio do estresse, fortalecimento emocional e bem-estar geral.</p>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-seedling fa-3x text-success mb-4"></i>
+            <h5 class="card-title">Aromaterapia</h5>
+            <p class="card-text">Aromaterapia: uma técnica que utiliza óleos essenciais extraídos de plantas para equilibrar corpo e mente, promovendo relaxamento, alívio do estresse, fortalecimento emocional e bem-estar geral.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card service-card border-0 shadow-sm mb-4">
-            <div class="card-body">
-              <i class="fas fa-lightbulb fa-3x text-info mb-4"></i>
-              <h5 class="card-title">Cromoterapia</h5>
-              <p class="card-text">Cromoterapia: uma terapia que utiliza as cores para harmonizar a energia do corpo, promovendo o equilíbrio físico, emocional e mental, ajudando na recuperação da saúde e na melhoria do bem-estar.</p>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-lightbulb fa-3x text-info mb-4"></i>
+            <h5 class="card-title">Cromoterapia</h5>
+            <p class="card-text">Cromoterapia: uma terapia que utiliza as cores para harmonizar a energia do corpo, promovendo o equilíbrio físico, emocional e mental, ajudando na recuperação da saúde e na melhoria do bem-estar.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card service-card border-0 shadow-sm mb-4">
-            <div class="card-body">
-              <i class="fas fa-band-aid fa-3x text-danger mb-4"></i>
-              <h5 class="card-title">Spiral Taping</h5>
-              <p class="card-text">Spiral Taping: uma técnica terapêutica que utiliza fitas adesivas aplicadas de forma específica na pele para aliviar dores, melhorar a circulação, corrigir a postura e promover o equilíbrio muscular e energético.</p>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-band-aid fa-3x text-danger mb-4"></i>
+            <h5 class="card-title">Spiral Taping</h5>
+            <p class="card-text">Spiral Taping: uma técnica terapêutica que utiliza fitas adesivas aplicadas de forma específica na pele para aliviar dores, melhorar a circulação, corrigir a postura e promover o equilíbrio muscular e energético.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cartões Ocultos -->
+      <div class="col-md-4 hidden-card" style="display: none;">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-tree fa-3x text-success mb-4"></i>
+            <h5 class="card-title">Bambuterapia</h5>
+            <p class="card-text">Bambuterapia: uma técnica terapêutica que utiliza bambus de diferentes tamanhos para realizar massagens profundas, promovendo a liberação de tensões musculares, estimulando a circulação sanguínea, drenando toxinas, equilibrando a energia corporal e proporcionando relaxamento e bem-estar integral.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 hidden-card" style="display: none;">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-spa fa-3x text-purple mb-4" style="color: #ff91af;"></i>
+            <h5 class="card-title">Massagem Aromática</h5>
+            <p class="card-text">Massagem Aromática: uma técnica que combina o uso de óleos essenciais com movimentos suaves e firmes para promover relaxamento profundo, aliviar tensões musculares, melhorar a circulação sanguínea e proporcionar equilíbrio emocional e físico.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 hidden-card" style="display: none;">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-hotjar fa-3x text-red mb-4"></i>
+            <h5 class="card-title">Massagem de Pedras Quentes</h5>
+            <p class="card-text">Massagem de Pedras Quentes: uma técnica terapêutica que utiliza pedras aquecidas aplicadas ao corpo para aliviar dores musculares, melhorar a circulação sanguínea, reduzir o estresse e proporcionar uma sensação profunda de relaxamento e bem-estar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 hidden-card" style="display: none;">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-leaf fa-3x text-green mb-4" style="color: #006400;"></i>
+            <h5 class="card-title">Massagem de Pindas Chinesas</h5>
+            <p class="card-text">Massagem de Pindas Chinesas: uma técnica terapêutica que utiliza saquinhos de ervas aquecidos aplicados sobre o corpo para proporcionar relaxamento profundo, aliviar dores musculares, melhorar a circulação sanguínea e promover o equilíbrio energético e o bem-estar geral.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 hidden-card" style="display: none;">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-hands fa-3x text-indigo mb-4" style="color: #FF9800;"></i>
+            <h5 class="card-title">Reiki</h5>
+            <p class="card-text">Reiki: uma técnica terapêutica que utiliza a imposição das mãos para canalizar a energia vital universal, promovendo a harmonização do corpo, mente e espírito. O Reiki ajuda a reduzir o estresse, aliviar dores, equilibrar emoções e melhorar o bem-estar geral.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 hidden-card" style="display: none;">
+        <div class="card service-card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <i class="fas fa-band-aid fa-3x text-danger mb-4"></i>
+            <h5 class="card-title">Kinesio Taping</h5>
+            <p class="card-text">Kinesio Taping: uma técnica terapêutica que utiliza fitas elásticas adesivas aplicadas sobre a pele para suportar músculos e articulações sem restringir os movimentos. Ajuda a aliviar dores, reduzir inflamações, melhorar a circulação e proporcionar suporte durante atividades físicas, promovendo uma recuperação mais rápida e eficaz.</p>
           </div>
         </div>
       </div>
     </div>
-</section> 
 
-  <<div id="carouselExampleIndicators" class="carousel slide container" data-bs-ride="carousel">
+    <!-- Botões Ver Mais e Ver Menos -->
+    <div class="d-flex justify-content-center mt-4">
+    <button id="loadMore" class="btn btn-primary mx-2">Ver Mais</button>
+    <button id="showLess" class="btn btn-secondary mx-2" style="display: none;">Ver Menos</button>
+</div>
+  </div>
+</section>
+
+  <div id="carouselExampleIndicators" class="carousel slide container" data-bs-ride="carousel">
   <!-- Indicadores Dinâmicos -->
   <div class="carousel-indicators">
     @php
@@ -248,11 +310,44 @@
   </footer>
 
   <!-- Bootstrap JavaScript -->
+  <script></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
       AOS.init();
   </script>
+
+<script>
+    document.getElementById('loadMore').addEventListener('click', function() {
+        const hiddenCards = document.querySelectorAll('.hidden-card');
+        let cardsToShow = 3; // Número de cartões para mostrar a cada clique
+        let hiddenCount = 0; // Contador para cartões exibidos
+
+        // Itera sobre os cartões ocultos e exibe o número necessário
+        hiddenCards.forEach((card) => {
+            if (hiddenCount < cardsToShow && card.style.display === 'none') {
+                card.style.display = 'block'; // Exibe o cartão
+                hiddenCount++;
+            }
+        });
+
+        // Verifica se todos os cartões foram exibidos
+        if (document.querySelectorAll('.hidden-card[style="display: none;"]').length === 0) {
+            this.style.display = 'none'; // Esconde o botão "Ver Mais" se não houver mais cartões
+            document.getElementById('showLess').style.display = 'block'; // Mostra o botão "Ver Menos"
+        }
+    });
+
+    document.getElementById('showLess').addEventListener('click', function() {
+        const hiddenCards = document.querySelectorAll('.hidden-card');
+        hiddenCards.forEach((card) => {
+            card.style.display = 'none'; // Oculta todos os cartões novamente
+        });
+
+        document.getElementById('loadMore').style.display = 'block'; // Mostra o botão "Ver Mais"
+        this.style.display = 'none'; // Esconde o botão "Ver Menos"
+    });
+</script>
   
 
 </body>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome para Ícones -->
@@ -13,6 +14,8 @@
     <!-- Estilo CSS Personalizado -->
     <link rel="stylesheet" href="{{ asset('css/estiloagendamento.css') }}"> <!-- Certifique-se de que o caminho está correto -->
     <link rel="icon" href="{{ asset('img/logoF.png') }}" type="image/x-icon">
+   
+
 </head>
 <body>
     <div class="container">
