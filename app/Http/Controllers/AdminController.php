@@ -9,6 +9,7 @@ use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Appointment;
+use App\Models\Service;
 
 class AdminController extends Controller
 {
@@ -34,8 +35,29 @@ class AdminController extends Controller
         // Aplica a paginação com 5 agendamentos por página
         $appointments = $appointmentsQuery->paginate(5);
     
+        $services = Service::all();
+
         // Retorna a visão com os agendamentos filtrados e paginados
-        return view('admin_dashboard', compact('appointments'));
+         return view('admin_dashboard', compact('appointments', 'services'));
+        
+    }
+
+    public function updateServiceValue(Request $request, $id)
+    {
+         // Valida os dados do formulário
+    $request->validate([
+        'valor' => 'required|numeric|min:0',
+    ]);
+
+    // Atualiza o valor do serviço
+    $service = Service::find($id);
+    if ($service) {
+        $service->valor = $request->valor;
+        $service->save();
+        return redirect()->route('admin_dashboard')->with('success', 'Valor do serviço atualizado com sucesso!');
+    }
+
+    return redirect()->route('admin_dashboard')->with('error', 'Serviço não encontrado.');
     }
     // Método para atualizar a imagem de fundo
     public function updateBackgroundImage(Request $request)

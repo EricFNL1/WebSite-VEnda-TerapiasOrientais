@@ -14,14 +14,14 @@
                         @csrf
                         <div class="mb-4">
                             <label for="service" class="form-label">Serviço</label>
-                            <select class="form-select" id="service" name="service" required>
+                            <select class="form-select" id="service" name="service" required onchange="updateServiceValue()">
                                 <option selected disabled>Selecione um serviço</option>
-                                <option value="Acupuntura">Auriculoterapia</option>
-                                <option value="Shiatsu">Shiatsu</option>
-                                <option value="Kanrenbuí">Kanrenbuí</option>
-                                <option value="Aromaterapia">Aromaterapia</option>
-                                <option value="Cromoterapia">Cromoterapia</option>
-                                <option value="Spiral Taping">Spiral Taping</option>
+                                <option value="Acupuntura" data-value="100.00">Auriculoterapia</option>
+                                <option value="Shiatsu" data-value="120.00">Shiatsu</option>
+                                <option value="Kanrenbuí" data-value="80.00">Kanrenbuí</option>
+                                <option value="Aromaterapia" data-value="90.00">Aromaterapia</option>
+                                <option value="Cromoterapia" data-value="110.00">Cromoterapia</option>
+                                <option value="Spiral Taping" data-value="95.00">Spiral Taping</option>
                             </select>
                         </div>
                         <div class="mb-4">
@@ -46,6 +46,10 @@
                                 <option value="19:00">19:00</option>
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="valor" class="form-label">Valor</label>
+                            <input type="text" id="valor" name="valor" class="form-control" readonly>
+                        </div>
                         <button type="submit" class="btn btn-primary w-100">Agendar</button>
                     </form>
                 </div>
@@ -57,4 +61,14 @@
 <div class="mb-4 container text-center">
     <a href="{{ route('appointments.index') }}" class="btn btn-secondary">Voltar</a>
 </div>
+
+<script>
+    function updateServiceValue() {
+        const serviceSelect = document.getElementById('service');
+        const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+        const serviceValue = selectedOption.getAttribute('data-value');
+        
+        document.getElementById('valor').value = serviceValue;
+    }
+</script>
 @endsection

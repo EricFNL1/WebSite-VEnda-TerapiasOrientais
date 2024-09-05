@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Service;
+
 
 class AppointmentController extends Controller
 {
@@ -31,7 +33,8 @@ class AppointmentController extends Controller
     
         // Calculando os horários disponíveis
         $availableTimes = array_diff($allTimes, $reservedTimes);
-    
+        $services = Service::all();
+
         return view('appointments.create', compact('availableTimes', 'reservedTimes'));
     }
     // Salvar um novo agendamento
@@ -41,6 +44,7 @@ class AppointmentController extends Controller
             'service' => 'required|string|max:255',
             'appointment_date' => 'required|date|after:today', // Validação apenas de data
             'appointment_time' => 'required|string',
+            'valor' => 'required|numeric',
         ]);
 
         // Verifique se o horário já está reservado
@@ -59,6 +63,7 @@ class AppointmentController extends Controller
             'appointment_date' => $request->appointment_date,
             'appointment_time' => $request->appointment_time,
             'status' => 'pending',
+            'valor' => $request->input('valor'),
         ]);
 
         return redirect()->route('appointments.index')->with('success', 'Agendamento criado com sucesso!');
@@ -91,8 +96,10 @@ class AppointmentController extends Controller
     $appointment->save();
 
     // Redireciona de volta com uma mensagem de sucesso
-    return redirect()->route('admin.dashboard')->with('success', 'Agendamento finalizado com sucesso.');
+    return redirect()->route('admin_dashboard')->with('success', 'Agendamento finalizado com sucesso.');
 }
+
+
 
     public function updateBackgroundImage(Request $request)
 {
@@ -134,6 +141,6 @@ public function updateTime(Request $request, Appointment $appointment)
     $appointment->appointment_time = $request->appointment_time;
     $appointment->save();
 
-    return redirect()->route('admin.dashboard')->with('success', 'Horário do agendamento atualizado com sucesso!');
+    return redirect()->route('admin_dashboard')->with('success', 'Horário do agendamento atualizado com sucesso!');
 }
 }
