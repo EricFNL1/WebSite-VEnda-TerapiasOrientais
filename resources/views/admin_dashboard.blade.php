@@ -4,7 +4,7 @@
 <div class="container py-5">
     <h1 class="text-center mb-4">Painel do Administrador</h1>
 
-    <form method="GET" action="{{ route('admin.dashboard') }}" class="mb-4">
+    <form method="GET" action="{{ route('admin_dashboard') }}" class="mb-4">
     <div class="row">
         <div class="col-md-4">
             <input type="date" name="date" class="form-control" value="{{ request('date') }}">

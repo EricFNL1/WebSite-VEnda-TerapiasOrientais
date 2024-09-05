@@ -50,7 +50,7 @@ class AdminController extends Controller
 
         }
 
-        return redirect()->route('admin.dashboard')->with('error', 'Nenhuma imagem foi enviada.');
+        return redirect()->route('admin_dashboard')->with('error', 'Nenhuma imagem foi enviada.');
     }
 
     // Método para atualizar imagens do carrossel

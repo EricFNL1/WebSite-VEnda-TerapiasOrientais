@@ -134,6 +134,6 @@ public function updateTime(Request $request, Appointment $appointment)
     $appointment->appointment_time = $request->appointment_time;
     $appointment->save();
 
-    return redirect()->route('admin_dashboard')->with('success', 'Horário do agendamento atualizado com sucesso!');
+    return redirect()->route('admin.dashboard')->with('success', 'Horário do agendamento atualizado com sucesso!');
 }
 }
