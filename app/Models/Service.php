@@ -9,5 +9,5 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'valor']; // Adicione os campos que você quer permitir para mass-assignment
+    protected $fillable = ['name', 'valor'];
 }

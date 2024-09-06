@@ -2,25 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'user_id',
-        'service',
-        'appointment_date',
-        'appointment_time',
-        'status',
-        'valor',
+        'user_id', 'service_id', 'appointment_date', 'appointment_time', 'status', 'valor'
     ];
-    
-    // Relacionamento com o usuário
-    public function user()
+
+    public function service()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Service::class);
     }
 }
+

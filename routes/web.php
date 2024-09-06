@@ -43,5 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/update-carousel-image', [AdminController::class, 'updateCarouselImage'])->name('admin.updateCarouselImage');
     Route::post('/admin/remove-carousel-image', [AdminController::class, 'removeCarouselImage'])->name('admin.removeCarouselImage');
    Route::patch('/admin/services/{id}/update-value', [AdminController::class, 'updateServiceValue'])->name('admin.service.updateValue');
+   Route::delete('/admin/service/{id}/remove', [AdminController::class, 'removeService'])->name('admin.removeService');
+   Route::post('/admin/add-service', [AdminController::class, 'addService'])->name('admin.addService');
 
 });

@@ -35,11 +35,36 @@ class AdminController extends Controller
         // Aplica a paginação com 5 agendamentos por página
         $appointments = $appointmentsQuery->paginate(5);
     
-        $services = Service::all();
+        $services = Service::paginate(5);
 
         // Retorna a visão com os agendamentos filtrados e paginados
          return view('admin_dashboard', compact('appointments', 'services'));
         
+    }
+    public function addService(Request $request)
+    {
+        // Valida os dados do formulário
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'valor' => 'required|numeric|min:0',
+        ]);
+
+        // Cria um novo serviço
+        Service::create([
+            'name' => $request->name,
+            'valor' => $request->valor,
+        ]);
+
+        return redirect()->route('admin_dashboard')->with('success', 'Serviço adicionado com sucesso!');
+    }
+
+    public function removeService($id)
+    {
+        // Remove o serviço
+        $service = Service::findOrFail($id);
+        $service->delete();
+
+        return redirect()->route('admin_dashboard')->with('success', 'Serviço removido com sucesso!');
     }
 
     public function updateServiceValue(Request $request, $id)

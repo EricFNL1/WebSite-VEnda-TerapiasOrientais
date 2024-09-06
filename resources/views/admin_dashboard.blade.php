@@ -82,6 +82,22 @@
         {{ $appointments->links('pagination::bootstrap-4') }}
     </div>
 
+    <h3 class="mt-5">Adicionar Novo Serviço</h3>
+    <form method="POST" action="{{ route('admin.addService') }}">
+        @csrf
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <input type="text" name="name" class="form-control" placeholder="Nome do Serviço" required>
+            </div>
+            <div class="col-md-2">
+                <input type="number" step="0.01" name="valor" class="form-control" placeholder="Valor" required>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Adicionar Serviço</button>
+            </div>
+        </div>
+    </form>
+
     <!-- Gerenciar Valores dos Serviços -->
     <h3 class="mt-5">Gerenciar Valores dos Serviços</h3>
     <table class="table">
@@ -99,7 +115,7 @@
                 <td>R$ {{ number_format($service->valor, 2, ',', '.') }}</td>
                 <td>
                     <!-- Formulário para alterar o valor -->
-                    <form method="POST" action="{{ route('admin.service.updateValue', $service->id) }}">
+                    <form method="POST" action="{{ route('admin.service.updateValue', $service->id) }}" class="d-inline">
                         @csrf
                         @method('PATCH')
                         <div class="input-group">
@@ -107,11 +123,21 @@
                             <button type="submit" class="btn btn-success">Atualizar</button>
                         </div>
                     </form>
+                    <!-- Formulário para remover o serviço -->
+                    <form method="POST" action="{{ route('admin.removeService', $service->id) }}" class="d-inline" onsubmit="return confirm('Tem certeza que deseja remover este serviço?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Remover</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
+    <div class="d-flex justify-content-center mt-4">
+        {{ $services->links('pagination::bootstrap-4') }}
+    </div>
 
     <!-- Gerenciar Imagem de Fundo da Página -->
     <h3 class="mt-5">Gerenciar Imagem de Fundo da Página</h3>
@@ -136,7 +162,8 @@
     </form>
 
     <!-- Lista de Imagens do Carrossel -->
-    <h3 class="mt-5">Gerenciar Imagens do Carrossel</h3>
+    <br>
+    <br>
     <div class="mb-4">
         @foreach (App\Models\CarouselImage::all() as $image)
             <div class="d-flex align-items-center mb-3">

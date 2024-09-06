@@ -10,29 +10,26 @@
         <div class="col-md-8">
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
-                    <form method="POST" action="{{ route('appointments.store') }}">
-                        @csrf
-                        <div class="mb-4">
-                            <label for="service" class="form-label">Serviço</label>
-                            <select class="form-select" id="service" name="service" required onchange="updateServiceValue()">
-                                <option selected disabled>Selecione um serviço</option>
-                                <option value="Acupuntura" data-value="100.00">Auriculoterapia</option>
-                                <option value="Shiatsu" data-value="120.00">Shiatsu</option>
-                                <option value="Kanrenbuí" data-value="80.00">Kanrenbuí</option>
-                                <option value="Aromaterapia" data-value="90.00">Aromaterapia</option>
-                                <option value="Cromoterapia" data-value="110.00">Cromoterapia</option>
-                                <option value="Spiral Taping" data-value="95.00">Spiral Taping</option>
-                            </select>
-                        </div>
-                        <div class="mb-4">
-                            <label for="appointment_date" class="form-label">Data do Agendamento</label>
-                            <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="appointment_time" class="form-label">Horário</label>
-                            <select id="appointment_time" name="appointment_time" class="form-select" required>
-                                <option selected disabled>Selecione um horário</option>
-                                <option value="08:00">08:00</option>
+                <form method="POST" action="{{ route('appointments.store') }}">
+    @csrf
+    <div class="mb-4">
+        <label for="service" class="form-label">Serviço</label>
+        <select class="form-select" id="service" name="service_id" required onchange="updateServiceValue()">
+            <option selected disabled>Selecione um serviço</option>
+            @foreach($services as $service)
+                <option value="{{ $service->id }}" data-value="{{ $service->valor }}">{{ $service->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-4">
+        <label for="appointment_date" class="form-label">Data do Agendamento</label>
+        <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+    </div>
+    <div class="mb-4">
+        <label for="appointment_time" class="form-label">Horário</label>
+        <select id="appointment_time" name="appointment_time" class="form-select" required>
+            <option selected disabled>Selecione um horário</option>
+            <option value="08:00">08:00</option>
                                 <option value="09:00">09:00</option>
                                 <option value="10:00">10:00</option>
                                 <option value="11:00">11:00</option>
@@ -44,14 +41,15 @@
                                 <option value="17:00">17:00</option>
                                 <option value="18:00">18:00</option>
                                 <option value="19:00">19:00</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="valor" class="form-label">Valor</label>
-                            <input type="text" id="valor" name="valor" class="form-control" readonly>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Agendar</button>
-                    </form>
+            <!-- Outros horários -->
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="valor" class="form-label">Valor</label>
+        <input type="text" id="valor" name="valor" class="form-control" readonly>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Agendar</button>
+</form>
                 </div>
             </div>
         </div>

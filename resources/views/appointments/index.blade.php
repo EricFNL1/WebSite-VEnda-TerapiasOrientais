@@ -22,34 +22,38 @@
         <a href="{{ route('appointments.create') }}" class="btn btn-primary">Novo Agendamento</a>
     </div>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Serviço</th>
-                <th>Data</th>
-                <th>Hora</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($appointments as $appointment)
-                <tr>
-                    <td>{{ $appointment->service }}</td>
-                    <td>{{ $appointment->appointment_date }}</td>
-                    <td>{{ $appointment->appointment_time }}</td> <!-- Exibir a hora do agendamento -->
-                    <td>{{ ucfirst($appointment->status) }}</td>
-                    <td>
-                        <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja cancelar este agendamento?')">Cancelar</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Serviço</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($appointments as $appointment)
+<tr>
+    <td>{{ $appointment->service_name }}</td> <!-- Exibe o nome do serviço diretamente -->
+    <td>{{ $appointment->appointment_date }}</td>
+    <td>{{ $appointment->appointment_time }}</td>
+    <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td> <!-- Exibe o valor formatado -->
+    <td>{{ $appointment->status }}</td>
+    <td>
+        <!-- Botão de Cancelamento com Confirmação -->
+        <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja cancelar este agendamento?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Cancelar</button>
+        </form>
+    </td>
+</tr>
+@endforeach
+</tbody>
+
+</table>
 
     <!-- Botão Voltar -->
     <div class="mb-4 container text-center">
