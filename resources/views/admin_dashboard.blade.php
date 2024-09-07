@@ -24,58 +24,57 @@
     <!-- Seção de Agendamentos -->
     <h2 class="mb-4">Todos os Agendamentos</h2>
     <table class="table">
-        <thead>
-            <tr>
-                <th>Usuário</th>
-                <th>Serviço</th>
-                <th>Data</th>
-                <th>Hora</th>
-                <th>Valor</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($appointments as $appointment)
-            <tr>
-                <td>{{ $appointment->user->name }}</td>
-                <td>{{ $appointment->service }}</td>
-                <td>{{ $appointment->appointment_date }}</td>
-                <td>
-                    <!-- Formulário para alterar a hora -->
-                    <form method="POST" action="{{ route('appointments.updateTime', $appointment->id) }}">
-                        @csrf
-                        @method('PATCH')
-                        <select name="appointment_time" class="form-select mb-2" required>
-                            <option selected disabled>Selecione um horário</option>
-                            @foreach (['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'] as $time)
-                                <option value="{{ $time }}" {{ $appointment->appointment_time == $time ? 'selected' : '' }}>
-                                    {{ $time }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <button type="submit" class="btn btn-warning">Alterar Hora</button>
-                    </form>
-                </td>
-                <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td>
-                <td>{{ $appointment->status }}</td>
-                <td>
-                    <!-- Botão de Cancelamento com Confirmação -->
-                    <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja cancelar este agendamento?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Cancelar</button>
-                    </form>
-                    <form method="POST" action="{{ route('appointments.finalize', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja finalizar este agendamento?');" class="d-inline">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn btn-success">Finalizar</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>Serviço</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($appointments as $appointment)
+        <tr>
+            <td>{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
+            <td>{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Usando o campo 'service' diretamente -->
+            <td>{{ $appointment->appointment_date }}</td>
+            <td>
+                <form method="POST" action="{{ route('appointments.updateTime', $appointment->id) }}">
+                    @csrf
+                    @method('PATCH')
+                    <select name="appointment_time" class="form-select mb-2" required>
+                        <option selected disabled>Selecione um horário</option>
+                        @foreach (['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'] as $time)
+                            <option value="{{ $time }}" {{ $appointment->appointment_time == $time ? 'selected' : '' }}>
+                                {{ $time }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-warning">Alterar Hora</button>
+                </form>
+            </td>
+            <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td>
+            <td>{{ $appointment->status }}</td>
+            <td>
+                <!-- Botão de Cancelamento com Confirmação -->
+                <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja cancelar este agendamento?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                </form>
+                <form method="POST" action="{{ route('appointments.finalize', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja finalizar este agendamento?');" class="d-inline">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit" class="btn btn-success">Finalizar</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
     <!-- Paginação -->
     <div class="d-flex justify-content-center mt-4">

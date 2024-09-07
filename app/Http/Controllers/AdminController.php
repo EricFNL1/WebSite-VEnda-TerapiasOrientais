@@ -26,6 +26,7 @@ class AdminController extends Controller
     
         // Cria uma query para recuperar os agendamentos
         $appointmentsQuery = Appointment::query();
+        
     
         // Aplica o filtro por data se uma data for fornecida
         if ($date) {
@@ -41,6 +42,18 @@ class AdminController extends Controller
          return view('admin_dashboard', compact('appointments', 'services'));
         
     }
+
+    public function adminDashboard()
+    {
+        // Carrega os agendamentos com os serviços e usuários associados
+        $appointments = Appointment::with('service', 'user')->get(); 
+    
+        // Verifique se todos os serviços necessários estão sendo carregados corretamente
+        $services = Service::all()->pluck('name', 'id'); // Cria um array de serviços com o ID como chave e o nome como valor
+    
+        return view('admin_dashboard', compact('appointments', 'services'));
+    }
+
     public function addService(Request $request)
     {
         // Valida os dados do formulário
@@ -138,5 +151,7 @@ class AdminController extends Controller
         }
 
         return redirect()->back()->with('error', 'Imagem não encontrada.');
+
+        
     }
 }

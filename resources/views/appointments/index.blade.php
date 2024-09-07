@@ -25,6 +25,7 @@
     <table class="table">
     <thead>
         <tr>
+            <th>Nome</th>
             <th>Serviço</th>
             <th>Data</th>
             <th>Hora</th>
@@ -36,10 +37,11 @@
     <tbody>
     @foreach($appointments as $appointment)
 <tr>
-    <td>{{ $appointment->service_name }}</td> <!-- Exibe o nome do serviço diretamente -->
+    <td>{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
+    <td>{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Exibe o nome do serviço salvo -->
     <td>{{ $appointment->appointment_date }}</td>
     <td>{{ $appointment->appointment_time }}</td>
-    <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td> <!-- Exibe o valor formatado -->
+    <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td>
     <td>{{ $appointment->status }}</td>
     <td>
         <!-- Botão de Cancelamento com Confirmação -->
