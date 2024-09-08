@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FinancialProjection;
 
 Route::get('/', function () {
     return view('index');
@@ -47,3 +49,5 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/admin/add-service', [AdminController::class, 'addService'])->name('admin.addService');
 
 });
+
+Route::get('/financial', [FinancialController::class, 'index'])->name('financial.index');

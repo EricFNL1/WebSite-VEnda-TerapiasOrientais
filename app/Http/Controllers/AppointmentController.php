@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\FinancialProjection;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,6 +70,13 @@ class AppointmentController extends Controller
             'status' => 'pending',
             'valor' => $request->valor,
         ]);
+        
+        FinancialProjection::create([
+            'appointment_id' => $appointment->id,
+            'projected_revenue' => $appointment->valor,
+            'projection_date' => $appointment->appointment_date,
+        ]);
+
     
         // Notifica o administrador
         $admin = User::where('role', 'admin')->first(); // Assume que o admin tem uma role 'admin'

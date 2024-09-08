@@ -8,6 +8,9 @@
     <div class="mb-4 container">
         <a href="{{ route('index') }}" class="btn btn-secondary">Voltar</a>
     </div>
+    <div class="mb-4 container">
+        <a href="{{ route('financial.index') }}" class="btn btn-secondary">Financeiro</a>
+    </div>
     
     <!-- Filtro por data -->
     <form method="GET" action="{{ route('admin_dashboard') }}" class="mb-4">
