@@ -51,3 +51,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/financial', [FinancialController::class, 'index'])->name('financial.index');
+Route::get('/financial', [FinancialController::class, 'index'])->name('financial.index');
+
+

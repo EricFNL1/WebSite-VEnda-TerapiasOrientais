@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
             // Verifica se o usuário é administrador
             if (Auth::user()->isAdmin()) {
-                return redirect()->intended('/admin/dashboard'); // Redireciona para o painel de administrador
+                return redirect()->intended('index'); // Redireciona para o painel de administrador
             }
 
             return redirect()->intended('/dashboard'); // Redireciona para o painel de usuário normal

@@ -96,7 +96,7 @@ class AppointmentController extends Controller
         }
 
         $appointment->delete();
-        return redirect()->route('appointments.index')->with('success', 'Agendamento cancelado com sucesso!');
+        return redirect()->route('admin_dashboard')->with('success', 'Agendamento cancelado com sucesso!');
     }
 
     public function finalize($id)

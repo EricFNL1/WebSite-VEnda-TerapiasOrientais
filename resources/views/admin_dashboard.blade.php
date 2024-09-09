@@ -7,9 +7,7 @@
 
     <div class="mb-4 container">
         <a href="{{ route('index') }}" class="btn btn-secondary">Voltar</a>
-    </div>
-    <div class="mb-4 container">
-        <a href="{{ route('financial.index') }}" class="btn btn-secondary">Financeiro</a>
+        <a href="{{ route('financial.index') }}" class="btn btn-secondary" style="color: #00FF00">Financeiro</a>
     </div>
     
     <!-- Filtro por data -->
