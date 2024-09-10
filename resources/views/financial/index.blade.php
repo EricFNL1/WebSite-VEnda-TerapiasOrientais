@@ -7,6 +7,10 @@
   <div class="mb-4 container text-center">
         <a href="{{ route('admin_dashboard') }}" class="btn btn-secondary">Voltar</a>
     </div>
+    <div class="mb-4">
+        <a href="{{ route('generate.excel') }}" class="btn btn-success">Download Relatório Excel</a>
+        <a href="{{ route('generate.pdf') }}" class="btn btn-danger">Download Relatório PDF</a>
+    </div>
     <!-- Formulário para Filtro de Mês e Ano -->
     <form method="GET" action="{{ route('financial.index') }}" class="mb-4">
         <div class="row">
@@ -62,7 +66,6 @@
         </tbody>
     </table>
 
-  
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

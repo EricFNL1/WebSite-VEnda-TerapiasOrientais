@@ -8,6 +8,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FinancialProjection;
+use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
     return view('index');
@@ -54,3 +55,7 @@ Route::get('/financial', [FinancialController::class, 'index'])->name('financial
 Route::get('/financial', [FinancialController::class, 'index'])->name('financial.index');
 
 
+
+
+Route::get('/generate-excel', [ReportController::class, 'generateExcelReport'])->name('generate.excel');
+Route::get('/generate-pdf', [ReportController::class, 'generatePDFReport'])->name('generate.pdf');

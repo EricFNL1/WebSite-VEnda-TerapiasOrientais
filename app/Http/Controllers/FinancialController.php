@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\FinancialProjection;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class FinancialController extends Controller
 {
     public function index(Request $request)
     {
+        if (Auth::user()->role !== 'admin') {
+            abort(403, 'Acesso negado');
+        }
         // Obtém os parâmetros de filtro de mês e ano
         $month = $request->input('month');
         $year = $request->input('year');
@@ -32,7 +37,10 @@ class FinancialController extends Controller
         // Extrai os meses e receitas para o gráfico
         $months = $projections->pluck('month')->toArray();
         $revenues = $projections->pluck('total_revenue')->toArray();
+        
 
         return view('financial.index', compact('months', 'revenues', 'projections', 'month', 'year'));
     }
+
+    
 }
