@@ -29,15 +29,19 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Validação incluindo o campo de telefone
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'phone' => ['required', 'string', 'max:15'], // Validação para o telefone
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Criação do usuário incluindo o telefone
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone, // Adicionando o telefone
             'password' => Hash::make($request->password),
         ]);
 

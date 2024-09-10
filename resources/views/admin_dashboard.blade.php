@@ -28,6 +28,7 @@
     <thead>
         <tr>
             <th>Usuário</th>
+            <th>Telefone</th> <!-- Nova coluna para telefone -->
             <th>Serviço</th>
             <th>Data</th>
             <th>Hora</th>
@@ -40,6 +41,7 @@
         @foreach($appointments as $appointment)
         <tr>
             <td>{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
+            <td>{{ $appointment->user ? $appointment->user->phone : 'Telefone não encontrado' }}</td> <!-- Exibe o telefone do usuário -->
             <td>{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Usando o campo 'service' diretamente -->
             <td>{{ $appointment->appointment_date }}</td>
             <td>
