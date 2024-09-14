@@ -36,26 +36,32 @@
     </thead>
     <tbody>
     @foreach($appointments as $appointment)
-<tr>
-    <td class="d-none d-md-table-cell">{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
-    <td>{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Exibe o nome do serviço salvo -->
-    <td>{{ $appointment->appointment_date }}</td>
-    <td>{{ $appointment->appointment_time }}</td>
-    <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td>
-    <td class="d-none d-md-table-cell">{{ $appointment->status }}</td>
-    <td>
-        <!-- Botão de Cancelamento com Confirmação -->
-        <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja cancelar este agendamento?');">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Cancelar</button>
-        </form>
-    </td>
-</tr>
-@endforeach
-</tbody>
-
+        <tr>
+            <td class="d-none d-md-table-cell">{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
+            <td>{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Exibe o nome do serviço salvo -->
+            <td>{{ $appointment->appointment_date }}</td>
+            <td>{{ $appointment->appointment_time }}</td>
+            <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td>
+            <td class="d-none d-md-table-cell">{{ $appointment->status }}</td>
+            <td>
+                <!-- Exibir botão de Cancelar apenas se o status não for "finalizado" -->
+                @if ($appointment->status !== 'Finalizado')
+                    <!-- Botão de Cancelamento com Confirmação -->
+                    <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja cancelar este agendamento?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Cancelar</button>
+                    </form>
+                @else
+                    <!-- Mensagem de agendamento finalizado -->
+                    <span class="text-muted">Agendamento finalizado</span>
+                @endif
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
 </table>
+
 
     <!-- Botão Voltar -->
     <div class="mb-4 container text-center">
