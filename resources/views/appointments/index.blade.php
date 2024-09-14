@@ -22,27 +22,27 @@
         <a href="{{ route('appointments.create') }}" class="btn btn-primary">Novo Agendamento</a>
     </div>
 
-    <table class="table">
+    <table class="table table-responsive">
     <thead>
         <tr>
-            <th>Nome</th>
+            <th class="d-none d-md-table-cell">Nome</th>
             <th>Serviço</th>
             <th>Data</th>
             <th>Hora</th>
             <th>Valor</th>
-            <th>Status</th>
+            <th class="d-none d-md-table-cell">Status</th>
             <th>Ações</th>
         </tr>
     </thead>
     <tbody>
     @foreach($appointments as $appointment)
 <tr>
-    <td>{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
+    <td class="d-none d-md-table-cell">{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
     <td>{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Exibe o nome do serviço salvo -->
     <td>{{ $appointment->appointment_date }}</td>
     <td>{{ $appointment->appointment_time }}</td>
     <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td>
-    <td>{{ $appointment->status }}</td>
+    <td class="d-none d-md-table-cell">{{ $appointment->status }}</td>
     <td>
         <!-- Botão de Cancelamento com Confirmação -->
         <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}" onsubmit="return confirm('Tem certeza que deseja cancelar este agendamento?');">

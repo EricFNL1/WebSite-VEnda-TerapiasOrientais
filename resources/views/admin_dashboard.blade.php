@@ -24,7 +24,7 @@
 
     <!-- Seção de Agendamentos -->
     <h2 class="mb-4">Todos os Agendamentos</h2>
-    <table class="table">
+    <table class="table table-responsive">
     <thead>
         <tr>
             <th>Usuário</th>
@@ -102,7 +102,7 @@
 
     <!-- Gerenciar Valores dos Serviços -->
     <h3 class="mt-5">Gerenciar Valores dos Serviços</h3>
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
             <tr>
                 <th>Serviço</th>

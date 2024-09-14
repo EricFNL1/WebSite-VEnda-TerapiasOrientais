@@ -1,6 +1,8 @@
 body {
     font-family: 'Noto Sans JP', sans-serif;
     background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -36,8 +38,14 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
 }
 
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Faz a tabela rolar horizontalmente em telas pequenas */
+}
+
 .table th, .table td {
     vertical-align: middle;
+    white-space: nowrap; /* Impede a quebra de linha dentro das células da tabela */
 }
 
 .table-hover tbody tr:hover {
@@ -49,7 +57,43 @@ h1, h2, h3, h4, h5, h6 {
     color: #0f5132;
 }
 
-.tamanhoimg{
-    width: 50px;
-    height: 50px;
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha em telas pequenas */
+    gap: 5px; /* Espaçamento entre os botões */
+}
+
+@media (max-width: 768px) {
+    .btn {
+        font-size: 12px; /* Diminui o tamanho do texto nos botões */
+        padding: 5px 10px; /* Ajusta o padding para telas menores */
+    }
+    
+    th, td {
+        font-size: 12px; /* Ajusta o tamanho da fonte das tabelas */
+        padding: 8px; /* Ajusta o espaçamento interno das células da tabela */
+    }
+
+    .btn-warning, .btn-danger, .btn-success {
+        width: 100%; /* Faz os botões ocuparem toda a largura em telas menores */
+        margin-bottom: 5px; /* Adiciona margem entre os botões para evitar sobreposição */
+    }
+
+    .table-responsive {
+        margin-bottom: 15px; /* Adiciona espaçamento abaixo da tabela em telas pequenas */
+    }
+
+    .d-md-table-cell {
+        display: none; /* Esconde colunas opcionais em telas menores */
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        flex-direction: column; /* Ajusta a navegação para empilhar em dispositivos muito pequenos */
+    }
+
+    .action-buttons {
+        flex-direction: column; /* Empilha os botões verticalmente em telas menores */
+    }
 }
