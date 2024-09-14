@@ -23,6 +23,14 @@
             <!-- Título -->
             <h2 class="text-center mb-4">Bem-vindo de Volta!</h2>
 
+                       <!-- Exibição de mensagens de erro -->
+                       @if ($errors->any())
+                <div class="mt-4 text-red-500">
+                     <strong>{{ __('Credenciais inválidas. Por favor, verifique seu email e senha e tente novamente.') }}</strong>
+                     </>
+                @endif
+
+
             <!-- Formulário de Login -->
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -39,6 +47,7 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
+       
                 <!-- Lembrar de Mim -->
                 <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="remember_me" name="remember">
