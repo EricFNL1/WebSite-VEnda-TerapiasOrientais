@@ -17,6 +17,16 @@
   <link rel="stylesheet" href="Animação.js">
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <link rel="icon" href="img/logoF.png" type="image/x-icon" loading="lazy">
+
+  <script type="text/javascript">
+        window.$crisp=[];window.CRISP_WEBSITE_ID="a46dc1fb-457d-4aff-80f4-3878dd262dd6";
+        (function(){
+            d=document;s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
 </head>
 <body>
 

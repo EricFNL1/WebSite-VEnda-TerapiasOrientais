@@ -14,7 +14,15 @@
     <!-- Estilo CSS Personalizado -->
     <link rel="stylesheet" href="{{ asset('estiloagendamentos.css') }}"> <!-- Certifique-se de que o caminho está correto -->
     <link rel="icon" href="{{ asset('img/logoF.png') }}" type="image/x-icon">
-   
+    <script type="text/javascript">
+        window.$crisp=[];window.CRISP_WEBSITE_ID="a46dc1fb-457d-4aff-80f4-3878dd262dd6";
+        (function(){
+            d=document;s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
 
 </head>
 <body>
