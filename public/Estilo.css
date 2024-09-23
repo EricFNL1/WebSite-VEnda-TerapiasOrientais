@@ -1,122 +1,129 @@
 .hero-overlay {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0; /* Certifique-se de que o overlay esteja atrás do conteúdo */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0; /* Certifique-se de que o overlay esteja atrás do conteúdo */
 }
 
 .hero-content {
-    z-index: 1;
-    text-align: center;
+  z-index: 1;
+  text-align: center;
 }
 
 .hidden-cards {
-  display: none;
-  transition: all 0.3s ease-in-out;
+display: none;
+transition: all 0.3s ease-in-out;
 }
 
 /* Seção de serviços */
 .service-card {
-    transition: transform 0.3s;
+  transition: transform 0.3s;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Seção de depoimentos */
 .testimonial {
-    background: #f8f9fa;
-    padding: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
+  background: #f8f9fa;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
 }
 
 /* Estilo do rodapé */
 footer {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 2rem 0;
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 2rem 0;
 }
 
 #logo {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 }
 
 .tamanhologo {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 a:link, #cab a:visited {
-    color: #fdfdff;
-    padding: 8px 12px;
+  color: #fdfdff;
+  padding: 8px 12px;
 }
 
 a:hover {
-    color: #1a1717;
-    background: #0c00000e;
-    text-decoration: none;
+  color: #1a1717;
+  background: #0c00000e;
+  text-decoration: none;
 }
 
 .navcor {
-    background-color: #B0C4DE;
+  background-color: #B0C4DE;
 }
 
 #textoprimer{
-    font-size: 20px;
-    font-family: 'Sawarabi Mincho', serif;
-  }
+  font-size: 20px;
+  font-family: 'Sawarabi Mincho', serif;
+}
 
-  body, h1, h2, h3, p, a {
-    font-family: 'Lora', serif;
-  }
+body, h1, h2, h3, p, a {
+  font-family: 'Lora', serif;
+}
 
 
 
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Permite que os ícones quebrem linha em telas pequenas */
+}
+
+#contact a {
+  display: inline-flex; /* Garante que o link se comporte como um bloco inline flexível */
+  justify-content: center; /* Centraliza o ícone dentro do link */
+}
+
+#contact img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+#contact img:hover {
+  transform: scale(1.2);
+}
+
+/* Ajuste para dispositivos móveis */
+@media (max-width: 576px) {
   #contact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap; /* Permite que os ícones quebrem linha em telas pequenas */
-  }
-  
-  #contact a {
-    display: inline-flex; /* Garante que o link se comporte como um bloco inline flexível */
-    justify-content: center; /* Centraliza o ícone dentro do link */
-  }
-  
-  #contact img {
-    width: 50px;
-    height: 50px;
-    transition: transform 0.3s ease;
-  }
-  
-  #contact img:hover {
-    transform: scale(1.2);
-  }
-  
-  /* Ajuste para dispositivos móveis */
-  @media (max-width: 576px) {
-    #contact {
-      flex-direction: row; /* Garante que os ícones permaneçam em linha, mas ajustem-se conforme o espaço */
-      justify-content: space-around; /* Centraliza e distribui os ícones igualmente em telas menores */
-    }
-  
-    #contact img {
-      width: 40px; /* Tamanho menor para telas pequenas */
-      height: 40px;
-    }
+    flex-direction: row; /* Garante que os ícones permaneçam em linha, mas ajustem-se conforme o espaço */
+    justify-content: space-around; /* Centraliza e distribui os ícones igualmente em telas menores */
   }
 
-  .tamanhoimg{
-    width: 50px;
-    height: 50px;
+  #contact img {
+    width: 40px; /* Tamanho menor para telas pequenas */
+    height: 40px;
+  }
+}
+
+.tamanhoimg{
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 768px) {
+  .carousel-inner img {
+      width: 100%; /* Para ajustar a largura da imagem à tela */
+      height: auto; /* Ajusta a altura proporcionalmente */
+}
 }
