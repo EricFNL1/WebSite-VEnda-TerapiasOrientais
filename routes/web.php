@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('appointments/{appointment}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
     Route::patch('/appointments/{appointment}/update-time', [AppointmentController::class, 'updateTime'])->name('appointments.updateTime');
     Route::patch('appointments/{appointment}/finalize', [AppointmentController::class, 'finalize'])->name('appointments.finalize');
+    Route::get('/appointments/available-times', [AppointmentController::class, 'getAvailableTimes'])->name('appointments.getAvailableTimes');
+
 });
 
 // Rotas para o painel do administrador

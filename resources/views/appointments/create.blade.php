@@ -23,27 +23,27 @@
                         </div>
                         <!-- Campo oculto para salvar o nome do serviço -->
                         <input type="hidden" id="service_name" name="service"> 
-
                         <div class="mb-4">
                             <label for="appointment_date" class="form-label">Data do Agendamento</label>
-                            <input type="date" class="form-control" id="appointment_date" name="appointment_date" value="{{ request('appointment_date') }}" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="appointment_time" class="form-label">Horário</label>
-                            <select id="appointment_time" name="appointment_time" class="form-select" required>
-                                <option selected disabled>Selecione um horário</option>
-                                @foreach ($availableTimes as $time)
-                                    <option value="{{ $time }}">{{ $time }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
+                            <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+                            <div class="mb-4">
+    <label for="appointment_time" class="form-label">Horário</label>
+    <select id="appointment_time" name="appointment_time" class="form-select @error('appointment_time') is-invalid @enderror" required>
+        <option selected disabled>Selecione um horário</option>
+        @foreach (['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'] as $time)
+            <option value="{{ $time }}">{{ $time }}</option>
+        @endforeach
+    </select>
+    @error('appointment_time')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
                         <div class="mb-3">
                             <label for="valor" class="form-label">Valor</label>
                             <input type="text" id="valor" name="valor" class="form-control" readonly>
                         </div>
-
                         <button type="submit" class="btn btn-primary w-100">Agendar</button>
                     </form>
                 </div>

@@ -20,78 +20,74 @@ class AppointmentController extends Controller
     return view('appointments.index', compact('appointments'));
 }
 
-public function create(Request $request)
-{
-    // Horários disponíveis para agendamento
-    $allTimes = [
-        '08:00', '09:00', '10:00', '11:00', '12:00',
-        '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
-    ];
+    public function create()
+    {
+        // Horários disponíveis para agendamento
+        $allTimes = [
+            '08:00', '09:00', '10:00', '11:00', '12:00',
+            '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
+        ];
 
-    $services = Service::all(); // Busca todos os serviços do banco de dados
-
-    // Se o usuário já escolheu uma data, verificamos os horários disponíveis
-    $reservedTimes = [];
-    if ($request->has('appointment_date')) {
-        $reservedTimes = Appointment::where('appointment_date', $request->appointment_date)
+        // Busca horários já reservados para uma data específica
+        $reservedTimes = Appointment::where('appointment_date', request('appointment_date'))
             ->pluck('appointment_time')
             ->toArray();
+
+        // Calcula os horários disponíveis
+        $availableTimes = array_diff($allTimes, $reservedTimes);
+        $services = Service::all(); // Busca todos os serviços do banco de dados
+
+        return view('appointments.create', compact('availableTimes', 'services'));
     }
-
-    // Calcula os horários disponíveis
-    $availableTimes = array_diff($allTimes, $reservedTimes);
-
-    return view('appointments.create', compact('availableTimes', 'services'));
-}
 
     public function store(Request $request)
-    {
-        // Validação dos dados
-        $request->validate([
-            'service_id' => 'required|exists:services,id',
-            'service' => 'required|string|max:255', // Validando o nome do serviço
-            'appointment_date' => 'required|date|after:today',
-            'appointment_time' => 'required|string',
-            'valor' => 'required|numeric',
-        ]);
-    
-        // Verifique se o horário já está reservado
-        $exists = Appointment::where('appointment_date', $request->appointment_date)
-                    ->where('appointment_time', $request->appointment_time)
-                    ->exists();
-    
-        if ($exists) {
-            return redirect()->back()->with('error', 'Este horário já está reservado. Por favor, escolha outro horário.');
-        }
-    
-        // Cria o novo agendamento e armazena na variável $appointment
-        $appointment = Appointment::create([
-            'user_id' => Auth::id(),
-            'service_id' => $request->service_id,
-            'service' => $request->service, // Salva o nome do serviço
-            'appointment_date' => $request->appointment_date,
-            'appointment_time' => $request->appointment_time,
-            'status' => 'pending',
-            'valor' => $request->valor,
-        ]);
-        
-        FinancialProjection::create([
-            'appointment_id' => $appointment->id,
-            'projected_revenue' => $appointment->valor,
-            'projection_date' => $appointment->appointment_date,
-        ]);
+{
+    // Validação dos dados
+    $request->validate([
+        'service_id' => 'required|exists:services,id',
+        'service' => 'required|string|max:255', // Validando o nome do serviço
+        'appointment_date' => 'required|date|after:today',
+        'appointment_time' => 'required|string',
+        'valor' => 'required|numeric',
+    ]);
 
-    
-        // Notifica o administrador
-        $admin = User::where('role', 'admin')->first(); // Assume que o admin tem uma role 'admin'
-        if ($admin) {
-            $admin->notify(new NewAppointmentNotification($appointment));
-        }
-    
-        return redirect()->route('appointments.index')->with('success', 'Agendamento criado com sucesso!');
+    // Verifique se o horário já está reservado
+    $exists = Appointment::where('appointment_date', $request->appointment_date)
+                ->where('appointment_time', $request->appointment_time)
+                ->exists();
+
+    if ($exists) {
+        // Redireciona de volta com uma mensagem de erro
+        return redirect()->back()->withInput()->withErrors([
+            'appointment_time' => 'Este horário já está reservado. Por favor, escolha outro horário.'
+        ]);
     }
-    
 
+    // Cria o novo agendamento e armazena na variável $appointment
+    $appointment = Appointment::create([
+        'user_id' => Auth::id(),
+        'service_id' => $request->service_id,
+        'service' => $request->service, // Salva o nome do serviço
+        'appointment_date' => $request->appointment_date,
+        'appointment_time' => $request->appointment_time,
+        'status' => 'pending',
+        'valor' => $request->valor,
+    ]);
+    
+    FinancialProjection::create([
+        'appointment_id' => $appointment->id,
+        'projected_revenue' => $appointment->valor,
+        'projection_date' => $appointment->appointment_date,
+    ]);
+
+    // Notifica o administrador
+    $admin = User::where('role', 'admin')->first(); // Assume que o admin tem uma role 'admin'
+    if ($admin) {
+        $admin->notify(new NewAppointmentNotification($appointment));
+    }
+
+    return redirect()->route('appointments.index')->with('success', 'Agendamento criado com sucesso!');
+}
     public function destroy(Appointment $appointment)
     {
         // Verifica se o usuário tem permissão para deletar o agendamento

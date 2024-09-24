@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Pusher\PushNotifications\PushNotifications;
 
 class NewAppointmentNotification extends Notification
 {
@@ -16,12 +18,24 @@ class NewAppointmentNotification extends Notification
         $this->appointment = $appointment;
     }
 
+    /**
+     * Define os canais de entrega da notificação.
+     *
+     * @param mixed $notifiable
+     * @return array
+     */
     public function via($notifiable)
     {
-        // Aqui você define o canal de notificação. Pode ser 'mail', 'database', 'broadcast', etc.
-        return ['mail']; // Exemplo para enviar um e-mail
+        // Aqui você define os canais para a notificação: e-mail e notificações push via Pusher Beams
+        return ['mail', 'pusher-beams'];
     }
 
+    /**
+     * Envia a notificação por e-mail.
+     *
+     * @param mixed $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
     public function toMail($notifiable)
     {
         return (new MailMessage)
@@ -38,6 +52,41 @@ class NewAppointmentNotification extends Notification
                     ->line('Obrigado por usar nosso sistema!');
     }
 
+    /**
+     * Envia a notificação push via Pusher Beams.
+     *
+     * @param mixed $notifiable
+     * @return void
+     */
+    public function toPusherBeams($notifiable)
+    {
+        $pushNotifications = new PushNotifications([
+            "instanceId" => env('PUSHER_BEAMS_INSTANCE_ID'),
+            "secretKey" => env('PUSHER_BEAMS_SECRET_KEY'),
+        ]);
+
+        $publishResponse = $pushNotifications->publishToInterests(
+            ['admins'], // Canal de interesse para os administradores
+            [
+                "web" => [
+                    "notification" => [
+                        "title" => "Novo Agendamento Criado!",
+                        "body" => "O usuário " . $this->appointment->user->name . " fez um novo agendamento.",
+                        "deep_link" => url('/admin/appointments')
+                    ]
+                ]
+            ]
+        );
+
+        return $publishResponse;
+    }
+
+    /**
+     * Envia a notificação para o banco de dados (opcional).
+     *
+     * @param mixed $notifiable
+     * @return array
+     */
     public function toArray($notifiable)
     {
         return [
