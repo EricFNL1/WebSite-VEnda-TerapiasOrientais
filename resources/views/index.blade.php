@@ -241,8 +241,8 @@
               <div class="card service-card border-0 shadow-sm mb-4">
                 <div class="card-body">
                   <i class="fas fa-band-aid fa-3x text-danger mb-4"></i>
-                  <h5 class="card-title">Kinesio Taping
-            <p class="card-text">Kinesio Taping: uma técnica terapêutica que utiliza fitas elásticas adesivas aplicadas sobre a pele para suportar músculos e articulações sem restringir os movimentos. Ajuda a aliviar dores, reduzir inflamações, melhorar a circulação e proporcionar suporte durante atividades físicas, promovendo uma recuperação mais rápida e eficaz.</p>
+                  <h5 class="card-title">Kinesio Taping</h5>
+                  <p class="card-text">Kinesio Taping: uma técnica terapêutica que utiliza fitas elásticas adesivas aplicadas sobre a pele para suportar músculos e articulações sem restringir os movimentos. Ajuda a aliviar dores, reduzir inflamações, melhorar a circulação e proporcionar suporte durante atividades físicas, promovendo uma recuperação mais rápida e eficaz.</p>
                 </div>
               </div>
             </div>
@@ -263,7 +263,7 @@
 
     <!-- Botão para agendamentos -->
     <div class="text-center mt-4">
-      <a href="{{ route('appointments.index') }}" class="btn btn-primary">Ver Agendamentos</a>
+      <a href="{{ route('appointments.index') }}" class="btn btn-primary">Agende agora!</a>
 </div>
 
 </section>
@@ -366,68 +366,6 @@
   <script>
       AOS.init();
   </script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    if (window.innerWidth <= 768) {  // Para telas menores que 768px (celulares)
-        let cards = document.querySelectorAll('.card');
-        for (let i = 3; i < cards.length; i++) {
-            cards[i].style.display = 'none';  // Esconde os cards após o terceiro
-        }
-
-        let moreButton = document.createElement('button');
-        moreButton.textContent = 'Ver mais serviços';
-        moreButton.classList.add('btn', 'btn-primary');
-        moreButton.style.display = 'block';
-        moreButton.style.margin = '20px auto';
-        moreButton.onclick = function() {
-            for (let i = 3; i < cards.length; i++) {
-                cards[i].style.display = 'block';  // Mostra todos os cards ao clicar
-            }
-            moreButton.style.display = 'none';  // Esconde o botão depois de expandir
-        };
-
-        document.querySelector('.cards-container').appendChild(moreButton);  // Adiciona o botão à página
-    }
-});
-</script>
-
-
-<script>
-    document.getElementById('loadMore').addEventListener('click', function() {
-        const hiddenCards = document.querySelectorAll('.hidden-card');
-        let cardsToShow = 3; // Número de cartões para mostrar a cada clique
-        let hiddenCount = 0; // Contador para cartões exibidos
-
-        // Itera sobre os cartões ocultos e exibe o número necessário
-        hiddenCards.forEach((card) => {
-            if (hiddenCount < cardsToShow && card.style.display === 'none') {
-                card.style.display = 'block'; // Exibe o cartão
-                hiddenCount++;
-            }
-        });
-
-        // Verifica se todos os cartões foram exibidos
-        if (document.querySelectorAll('.hidden-card[style="display: none;"]').length === 0) {
-            this.style.display = 'none'; // Esconde o botão "Ver Mais" se não houver mais cartões
-            document.getElementById('showLess').style.display = 'block'; // Mostra o botão "Ver Menos"
-        }
-    });
-
-    document.getElementById('showLess').addEventListener('click', function() {
-        const hiddenCards = document.querySelectorAll('.hidden-card');
-        hiddenCards.forEach((card) => {
-            card.style.display = 'none'; // Oculta todos os cartões novamente
-        });
-
-        document.getElementById('loadMore').style.display = 'block'; // Mostra o botão "Ver Mais"
-        this.style.display = 'none'; // Esconde o botão "Ver Menos"
-    });
-</script>
-
-
-  
 
 </body>
 </html>

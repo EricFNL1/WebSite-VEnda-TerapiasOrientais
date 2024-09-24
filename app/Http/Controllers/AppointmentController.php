@@ -20,25 +20,29 @@ class AppointmentController extends Controller
     return view('appointments.index', compact('appointments'));
 }
 
-    public function create()
-    {
-        // Horários disponíveis para agendamento
-        $allTimes = [
-            '08:00', '09:00', '10:00', '11:00', '12:00',
-            '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
-        ];
+public function create(Request $request)
+{
+    // Horários disponíveis para agendamento
+    $allTimes = [
+        '08:00', '09:00', '10:00', '11:00', '12:00',
+        '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
+    ];
 
-        // Busca horários já reservados para uma data específica
-        $reservedTimes = Appointment::where('appointment_date', request('appointment_date'))
+    $services = Service::all(); // Busca todos os serviços do banco de dados
+
+    // Se o usuário já escolheu uma data, verificamos os horários disponíveis
+    $reservedTimes = [];
+    if ($request->has('appointment_date')) {
+        $reservedTimes = Appointment::where('appointment_date', $request->appointment_date)
             ->pluck('appointment_time')
             ->toArray();
-
-        // Calcula os horários disponíveis
-        $availableTimes = array_diff($allTimes, $reservedTimes);
-        $services = Service::all(); // Busca todos os serviços do banco de dados
-
-        return view('appointments.create', compact('availableTimes', 'services'));
     }
+
+    // Calcula os horários disponíveis
+    $availableTimes = array_diff($allTimes, $reservedTimes);
+
+    return view('appointments.create', compact('availableTimes', 'services'));
+}
 
     public function store(Request $request)
     {

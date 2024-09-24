@@ -1,3 +1,4 @@
+/* Overlay e conteúdo do Hero */
 .hero-overlay {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
   position: absolute;
@@ -13,12 +14,42 @@
   text-align: center;
 }
 
+/* Media query para telas menores */
+@media (max-width: 768px) {
+  .hero {
+      height: 60vh; /* Ajusta a altura para celulares */
+  }
+
+  .hero-content h1 {
+      font-size: 1.8rem; /* Reduz o tamanho da fonte do título no celular */
+  }
+
+  .hero-content p {
+      font-size: 1rem; /* Reduz o tamanho da fonte do texto no celular */
+      padding: 0 10px; /* Adiciona espaçamento nas laterais */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+      height: 50vh; /* Ajusta ainda mais a altura para telas menores */
+  }
+
+  .hero-content h1 {
+      font-size: 1.5rem; /* Ajuste adicional para títulos em telas bem pequenas */
+  }
+
+  .hero-content p {
+      font-size: 0.9rem; /* Ajuste para o parágrafo */
+  }
+}
+
+/* Cartões de serviços */
 .hidden-cards {
 display: none;
 transition: all 0.3s ease-in-out;
 }
 
-/* Seção de serviços */
 .service-card {
   transition: transform 0.3s;
 }
@@ -37,7 +68,7 @@ transition: all 0.3s ease-in-out;
   margin-bottom: 1.5rem;
 }
 
-/* Estilo do rodapé */
+/* Rodapé */
 footer {
   background-color: #343a40;
   color: #ffffff;
@@ -78,8 +109,6 @@ body, h1, h2, h3, p, a {
   font-family: 'Lora', serif;
 }
 
-
-
 #contact {
   display: flex;
   justify-content: center;
@@ -116,14 +145,44 @@ body, h1, h2, h3, p, a {
   }
 }
 
-.tamanhoimg{
-  width: 50px;
-  height: 50px;
+/* Carrossel */
+.carousel-inner img {
+width: 1000px;
+height: 600px;
+object-fit: cover;
 }
 
+/* Media query para telas pequenas (celulares) */
 @media (max-width: 768px) {
-  .carousel-inner img {
-      width: 100%; /* Para ajustar a largura da imagem à tela */
-      height: auto; /* Ajusta a altura proporcionalmente */
+.carousel-inner img {
+    width: 100%; /* Para ajustar a largura da imagem à tela */
+    height: auto; /* Ajusta a altura proporcionalmente */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-indicators button {
+    width: 8px;
+    height: 8px;
+}
+}
+
+/* Media query para tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+.carousel-inner img {
+    width: 100%; 
+    height: auto;
+}
+}
+
+/* Adaptação para botões em telas menores */
+@media (max-width: 576px) {
+.btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
 }
 }
