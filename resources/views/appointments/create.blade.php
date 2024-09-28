@@ -56,6 +56,7 @@
     <a href="{{ route('appointments.index') }}" class="btn btn-secondary">Voltar</a>
 </div>
 
+
 <script>
     function updateServiceValue() {
         const serviceSelect = document.getElementById('service');

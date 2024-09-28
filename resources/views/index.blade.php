@@ -27,6 +27,16 @@
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
+
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "be69d38d-e17b-4019-933b-1b140244ca19",
+    });
+  });
+</script>
 </head>
 <body>
 
@@ -366,6 +376,8 @@
   <script>
       AOS.init();
   </script>
+
+
 
 </body>
 </html>
