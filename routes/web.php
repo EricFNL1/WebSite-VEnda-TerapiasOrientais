@@ -66,3 +66,15 @@ Route::get('/generate-pdf', [ReportController::class, 'generatePDFReport'])->nam
 
 
 Route::post('/crisp/webhook', [CrispController::class, 'handleWebhook']);
+
+
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/test-email', function () {
+    Mail::raw('Este é um e-mail de teste do Laravel.', function ($message) {
+        $message->to('destinatario@exemplo.com') // Insira o e-mail de destino aqui
+                ->subject('Teste de E-mail Laravel');
+    });
+
+    return 'E-mail de teste enviado!';
+});

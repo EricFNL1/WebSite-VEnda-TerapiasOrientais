@@ -9,7 +9,8 @@ use App\Notifications\AppointmentCreatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewAppointmentNotification;
-use App\Models\User; // Importa o modelo User
+use App\Models\User; 
+use Notification;// Importa o modelo User
 
 class AppointmentController extends Controller
 {
@@ -80,6 +81,10 @@ class AppointmentController extends Controller
         'projected_revenue' => $appointment->valor,
         'projection_date' => $appointment->appointment_date,
     ]);
+
+       // Notificar administradores
+       $adminUsers = User::where('role', 'admin')->get();
+       Notification::send($adminUsers, new AppointmentCreatedNotification($appointment));
 
 
     return redirect()->route('appointments.index')->with('success', 'Agendamento criado com sucesso!');
