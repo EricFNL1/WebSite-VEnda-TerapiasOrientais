@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\FinancialProjection;
 use App\Models\Service;
+use App\Notifications\AppointmentCreated;
 use App\Notifications\AppointmentCreatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,10 +83,15 @@ class AppointmentController extends Controller
         'projection_date' => $appointment->appointment_date,
     ]);
 
-       // Notificar administradores
-       $adminUsers = User::where('role', 'admin')->get();
-       Notification::send($adminUsers, new AppointmentCreatedNotification($appointment));
+    $user = Auth::user();
+    $user->notify(new AppointmentCreated($appointment));
 
+    // Notifica o administrador sobre o novo agendamento
+    // Aqui, assumo que o administrador tenha a role 'admin'
+    $admin = User::where('role', 'admin')->first(); // ou ajuste a lógica para encontrar o administrador
+    if ($admin) {
+        $admin->notify(new AppointmentCreated($appointment));
+    }
 
     return redirect()->route('appointments.index')->with('success', 'Agendamento criado com sucesso!');
 }
