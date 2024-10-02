@@ -9,6 +9,8 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome para Ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="Estilo.css">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
@@ -18,25 +20,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <link rel="icon" href="img/logoF.png" type="image/x-icon" loading="lazy">
 
-  <script type="text/javascript">
-        window.$crisp=[];window.CRISP_WEBSITE_ID="a46dc1fb-457d-4aff-80f4-3878dd262dd6";
-        (function(){
-            d=document;s=d.createElement("script");
-            s.src="https://client.crisp.chat/l.js";
-            s.async=1;
-            d.getElementsByTagName("head")[0].appendChild(s);
-        })();
-    </script>
-
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "be69d38d-e17b-4019-933b-1b140244ca19",
-    });
-  });
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/66fd3704e5982d6c7bb79a5c/1i96htqn7';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
+<!--End of Tawk.to Script-->
 </head>
 <body>
 
@@ -68,7 +64,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark navcor fixed-top">
   <div class="container">
     <img id="logo" src="img/logoF.png" alt="Logo Terapias Orientais" class="me-2" loading="lazy">
-    <p class="text-white mb-0" id="textoprimer">Terapias Orientais</p>
+    <p class="text-white mb-0" id="textoprimer">Espaço Luz</p>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -81,6 +77,9 @@
           <a class="nav-link" href="#testimonials">Depoimentos</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="https://escritorio.phytoterapica.com.br/espacoluzterapiasorientais">Produtos</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#contact">Contato</a>
         </li>
         <li class="nav-item">
@@ -90,7 +89,7 @@
         <!-- Verificação de Autenticação -->
         @guest
           <li class="nav-item">
-            <a class="btn btn-link" href="{{ route('login') }}">Entrar</a>
+            <a class="btn btn-login" href="{{ route('login') }}">Entrar</a>
           </li>
         @else
           <!-- Verificação se o usuário é admin -->
@@ -104,7 +103,7 @@
           <li class="nav-item">
             <form method="POST" action="{{ route('logout') }}">
               @csrf
-              <button type="submit" class="btn btn-link">Sair</button>
+              <button type="submit" class="btn btn-login">Sair</button>
             </form>
           </li>
         @endguest
@@ -119,6 +118,7 @@
     <div class="hero-content text-center text-white py-5">
       <h1 class="display-4 cor">Descubra o Equilíbrio e a Harmonia</h1>
       <p class="lead textolegenda cor">Terapias orientais para restaurar sua saúde e bem-estar</p>
+      <a href="#services" class="btn-saiba-mais">SAIBA MAIS</a>
     </div>
   </header>
 

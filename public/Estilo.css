@@ -85,15 +85,34 @@ footer {
   height: 50px;
 }
 
-a:link, #cab a:visited {
-  color: #fdfdff;
-  padding: 8px 12px;
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 8px 16px;
+  color: #fff;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
 }
 
-a:hover {
-  color: #1a1717;
-  background: #0c00000e;
-  text-decoration: none;
+/* Pseudo-elemento para o underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #de6eec; /* Cor do underline */
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* Efeito hover */
+.nav-link:hover::after {
+  width: 100%; /* Expande o underline no hover */
 }
 
 /*.navcor {
@@ -101,9 +120,10 @@ a:hover {
 }
 */
 
+
 #textoprimer{
   font-size: 20px;
-  font-family: 'Sawarabi Mincho', serif;
+  font-family: 'Mochiy Pop One', sans-serif; 
 }
 
 body, h1, h2, h3, p, a {
@@ -219,4 +239,44 @@ object-fit: cover;
   #product-carousel .card {
     width: 100%; /* Ajusta a largura para telas pequenas */
   }
+}
+
+
+/* Estilo para o botão "Entrar" */
+.btn-login {
+  color: #fff;
+  background-color: #df79bd; /* Laranja como cor de destaque */
+  padding: 8px 16px;
+  border: 2px solid #df79bd;
+  border-radius: 20px; /* Bordas arredondadas */
+  transition: all 0.3s ease;
+  text-decoration: none; /* Remove o sublinhado */
+}
+
+.btn-login:hover {
+  background-color: #fff; /* Muda o fundo para branco ao passar o mouse */
+  color: #f04fda; /* Muda a cor do texto para laranja */
+  border-color: #ee62e7; /* Mantém a borda laranja */
+  text-decoration: none; /* Remove o sublinhado */
+}
+
+
+.btn-saiba-mais {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid #f3f3f3;
+  border-radius: 30px;
+  color: #fffdfc;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efeito hover */
+.btn-saiba-mais:hover {
+  background-color: #ee8cd9;
+  color: #ffffff;
 }

@@ -38,7 +38,7 @@
     @foreach($appointments as $appointment)
         <tr>
             <td class="d-none d-md-table-cell">{{ $appointment->user ? $appointment->user->name : 'Usuário não encontrado' }}</td>
-            <td>{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Exibe o nome do serviço salvo -->
+            <td class="service-column" title="{{ $appointment->service }}">{{ $appointment->service ? $appointment->service : 'Serviço não encontrado' }}</td> <!-- Exibe o nome do serviço salvo -->
             <td>{{ $appointment->appointment_date }}</td>
             <td>{{ $appointment->appointment_time }}</td>
             <td>R$ {{ number_format($appointment->valor, 2, ',', '.') }}</td>

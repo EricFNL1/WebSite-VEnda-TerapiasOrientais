@@ -97,3 +97,28 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: column; /* Empilha os botões verticalmente em telas menores */
     }
 }
+
+/* Ajuste para a coluna de Serviço */
+.service-column {
+    max-width: 120px; /* Limite de largura para a coluna de serviço */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+    cursor: help; /* Muda o cursor ao passar sobre o texto */
+}
+
+/* Opcional: estilizar o tooltip se necessário */
+.service-column[title] {
+    text-decoration: underline dotted; /* Adiciona uma linha pontilhada para indicar que há uma tooltip */
+}
+
+
+@media (max-width: 768px) {
+    /* Ajuste para colunas em telas pequenas */
+    .service-column {
+        max-width: 80px; /* Menor largura para telas pequenas */
+    }
+}
+
+
