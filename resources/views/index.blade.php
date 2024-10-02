@@ -122,7 +122,7 @@ s0.parentNode.insertBefore(s1,s0);
     </div>
   </header>
 
-  <section id="services" class="py-5" data-aos="fade-up">
+  <section id="services" class="py-5">
   <div class="container">
     <h2 class="text-center mb-5">Nossos Serviços</h2>
     <div id="serviceCarousel" class="carousel slide" data-bs-ride="carousel">

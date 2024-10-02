@@ -52,7 +52,7 @@
     </div>
 </div>
 <!-- Botão Voltar -->
-<div class="mb-4 container text-center">
+<div class="mb-4 container text-center mt-4">
     <a href="{{ route('appointments.index') }}" class="btn btn-secondary">Voltar</a>
 </div>
 
