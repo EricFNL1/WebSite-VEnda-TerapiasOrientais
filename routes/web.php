@@ -80,6 +80,15 @@ Route::get('/send-test-email', function () {
     return 'E-mail de teste enviado!';
 });
 
+// Rota para a página inicial (index)
+Route::get('/', [AdminController::class, 'getSettings'])->name('index');
 
+// Rota para a página inicial (index)
+Route::get('/', [AdminController::class, 'getSettings'])->name('index');
 
+// Rota para configurar as configurações do admin
+Route::get('/admin/settings', [AdminController::class, 'getSettings'])->name('admin.getSettings');
+
+// Rota para atualizar a cor da navbar
+Route::post('/admin/update-nav-color', [AdminController::class, 'updateNavColor'])->name('admin.updateNavColor');
 

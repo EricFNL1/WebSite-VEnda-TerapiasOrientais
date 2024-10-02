@@ -55,6 +55,15 @@
 }
 </style>
 
+<style>
+    .navcor {
+        background-color: {{ $navColor ?? '#B0C4DE' }} !important;
+    }
+</style>
+
+
+
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark navcor fixed-top">
   <div class="container">
@@ -330,6 +339,59 @@
       </div>
     </div>
   </section>
+
+<div class="container text-center">
+  <h2>Nossos Produtos</h2>
+  <div class="container my-5">
+  <h4 class="text-center mb-5">Itens Mais Vistos</h4>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+  
+    <!-- Produto 2 -->
+    <div class="col">
+      <div class="card product-card">
+        <img src="https://escritorio.phytoterapica.com.br/imagens//20240514_Mockup_OE_Lavanda_Francesa_Cartucho_Frasco_branco.jpg" class="card-img-top product-img" alt="Óleo Essencial Lavanda Francesa - 10ml">
+        <div class="card-body text-center">
+          <h5 class="product-title">Óleo Essencial Lavanda Francesa - 10ml</h5>
+          <p class="text-muted">cód.16</p>
+          <p class="product-price">R$ 60,00</p>
+          <a href="https://escritorio.phytoterapica.com.br/espacoluzterapiasorientais"><button class="btn btn-primary">Comprar</button></a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Produto 4 -->
+    <div class="col">
+      <div class="card product-card">
+        <img src="https://escritorio.phytoterapica.com.br/imagens//Alecrim_%2010ml_caixa.jpg" class="card-img-top product-img" alt="Óleo Essencial Alecrim (QT cineol) - 10ml">
+        <div class="card-body text-center">
+          <h5 class="product-title">Óleo Essencial Alecrim (QT cineol) - 10ml</h5>
+          <p class="text-muted">cód.1</p>
+          <p class="product-price">R$ 43,80</p>
+          <a href="https://escritorio.phytoterapica.com.br/espacoluzterapiasorientais"><button class="btn btn-primary">Comprar</button></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produto 5 -->
+    <div class="col">
+      <div class="card product-card">
+        <img src="https://escritorio.phytoterapica.com.br/imagens//Melaleuca%2010ml.jpg" class="card-img-top product-img" alt="Óleo Essencial Melaleuca Tree - 10ml">
+        <div class="card-body text-center">
+          <h5 class="product-title">Óleo Essencial Melaleuca Tree - 10ml</h5>
+          <p class="text-muted">cód.21</p>
+          <p class="product-price">R$ 50,00</p>
+          <a href="https://escritorio.phytoterapica.com.br/espacoluzterapiasorientais"><button class="btn btn-primary">Comprar</button></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
 
   <!-- Seção de Contato -->
   <section id="contact" class="py-5 bg-dark text-white" data-aos="fade-up">

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Appointment;
 use App\Models\Service;
+use App\Models\Setting;
 
 class AdminController extends Controller
 {
@@ -154,4 +155,31 @@ class AdminController extends Controller
 
         
     }
+
+    public function getSettings() 
+    {
+        // Recupera a configuração de cor do banco de dados
+        $settings = Setting::first();
+        $navColor = $settings->nav_color ?? '#B0C4DE'; // Cor padrão se não estiver definido
+        
+        return view('index', compact('navColor'));
+    }
+    
+public function updateNavColor(Request $request)
+{
+    // Validate the input
+    $request->validate(['nav_color' => 'required|string|max:7']);
+
+    // Fetch the settings or create new one if it doesn't exist
+    $setting = Setting::first();
+    if (!$setting) {
+        $setting = new Setting();
+    }
+    
+    // Update the navbar color
+    $setting->nav_color = $request->nav_color;
+    $setting->save();
+
+    return redirect()->route('admin_dashboard')->with('success', 'Navbar color updated successfully!');
+}
 }

@@ -141,6 +141,17 @@
         {{ $services->links('pagination::bootstrap-4') }}
     </div>
 
+    <!-- Gerenciar Cor de Fundo da Página -->
+    <h3 class="mt-5">Gerenciar Cor de Fundo da Barra</h3>
+    <form action="{{ route('admin.updateNavColor') }}" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="nav_color">Navbar Color:</label>
+        <input type="color" id="nav_color" name="nav_color" value="{{ $settings->nav_color ?? '#B0C4DE' }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Color</button>
+</form>
+
     <!-- Gerenciar Imagem de Fundo da Página -->
     <h3 class="mt-5">Gerenciar Imagem de Fundo da Página</h3>
     <form method="POST" action="{{ route('admin.updateBackgroundImage') }}" enctype="multipart/form-data">
