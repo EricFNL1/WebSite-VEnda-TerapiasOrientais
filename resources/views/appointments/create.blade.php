@@ -25,21 +25,19 @@
                         <input type="hidden" id="service_name" name="service"> 
                         <div class="mb-4">
                             <label for="appointment_date" class="form-label">Data do Agendamento</label>
-                            <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
-                            <div class="mb-4">
-    <label for="appointment_time" class="form-label">Horário</label>
-    <select id="appointment_time" name="appointment_time" class="form-select @error('appointment_time') is-invalid @enderror" required>
-        <option selected disabled>Selecione um horário</option>
-        @foreach (['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'] as $time)
-            <option value="{{ $time }}">{{ $time }}</option>
-        @endforeach
-    </select>
-    @error('appointment_time')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
+                            <input type="date" class="form-control" id="appointment_date" name="appointment_date" required onchange="fetchAvailableTimes()">
+                        </div>
+                        <div class="mb-4">
+                            <label for="appointment_time" class="form-label">Horário</label>
+                            <select id="appointment_time" name="appointment_time" class="form-select @error('appointment_time') is-invalid @enderror" required>
+                                <option selected disabled>Selecione um horário</option>
+                            </select>
+                            @error('appointment_time')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <label for="valor" class="form-label">Valor</label>
                             <input type="text" id="valor" name="valor" class="form-control" readonly>
@@ -56,8 +54,9 @@
     <a href="{{ route('appointments.index') }}" class="btn btn-secondary">Voltar</a>
 </div>
 
-
+<!-- Script para buscar horários disponíveis dinamicamente -->
 <script>
+    // Função para atualizar o valor do serviço
     function updateServiceValue() {
         const serviceSelect = document.getElementById('service');
         const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
@@ -68,5 +67,34 @@
         document.getElementById('valor').value = serviceValue;
         document.getElementById('service_name').value = serviceName;
     }
+
+    // Função para buscar horários disponíveis dinamicamente
+    function fetchAvailableTimes() {
+    const date = document.getElementById('appointment_date').value;
+
+    if (date) {
+        fetch(`/appointments/available-times?date=${date}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Verificar a resposta
+                const timeSelect = document.getElementById('appointment_time');
+                timeSelect.innerHTML = '<option selected disabled>Selecione um horário</option>';
+
+                // Transformar os horários disponíveis em um array, se necessário
+                const availableTimes = Object.values(data.availableTimes);
+
+                // Verifica se há horários disponíveis
+                if (availableTimes.length > 0) {
+                    availableTimes.forEach(time => {
+                        timeSelect.innerHTML += `<option value="${time}">${time}</option>`;
+                    });
+                } else {
+                    timeSelect.innerHTML = '<option selected disabled>Nenhum horário disponível</option>';
+                }
+            })
+            .catch(error => console.error('Erro ao buscar horários disponíveis:', error));
+    }
+}
+
 </script>
 @endsection

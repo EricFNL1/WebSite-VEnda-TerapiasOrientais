@@ -23,27 +23,32 @@ class AppointmentController extends Controller
     return view('appointments.index', compact('appointments'));
 }
 
-    public function create()
-    {
-        // Horários disponíveis para agendamento
-        $allTimes = [
-            '08:00', '09:00', '10:00', '11:00', '12:00',
-            '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
-        ];
+public function create(Request $request)
+{
+    // Horários disponíveis para agendamento
+    $allTimes = [
+        '08:00', '09:00', '10:00', '11:00', '12:00',
+        '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
+    ];
 
+    $availableTimes = [];
+
+    // Caso a data tenha sido fornecida
+    if ($request->has('appointment_date')) {
         // Busca horários já reservados para uma data específica
-        $reservedTimes = Appointment::where('appointment_date', request('appointment_date'))
+        $reservedTimes = Appointment::where('appointment_date', $request->appointment_date)
             ->pluck('appointment_time')
             ->toArray();
 
         // Calcula os horários disponíveis
         $availableTimes = array_diff($allTimes, $reservedTimes);
-        $services = Service::all(); // Busca todos os serviços do banco de dados
-
-        return view('appointments.create', compact('availableTimes', 'services'));
     }
 
-    public function store(Request $request)
+    $services = Service::all(); // Busca todos os serviços do banco de dados
+
+    return view('appointments.create', compact('availableTimes', 'services'));
+}
+public function store(Request $request)
 {
     // Validação dos dados
     $request->validate([
@@ -54,9 +59,9 @@ class AppointmentController extends Controller
         'valor' => 'required|numeric',
     ]);
 
-    // Verifique se o horário já está reservado
+    // Verifique se o horário específico já está reservado na data fornecida
     $exists = Appointment::where('appointment_date', $request->appointment_date)
-                ->where('appointment_time', $request->appointment_time)
+                ->where('appointment_time', $request->appointment_time) // Certifique-se de que é o horário específico
                 ->exists();
 
     if ($exists) {
@@ -76,25 +81,54 @@ class AppointmentController extends Controller
         'status' => 'pending',
         'valor' => $request->valor,
     ]);
-    
+
+    // Cria uma projeção financeira para o agendamento
     FinancialProjection::create([
         'appointment_id' => $appointment->id,
         'projected_revenue' => $appointment->valor,
         'projection_date' => $appointment->appointment_date,
     ]);
 
-    $user = Auth::user();
-    $user->notify(new AppointmentCreated($appointment));
+   // Notifica o usuário que o agendamento foi criado
+$user = Auth::user();
+$user->notify(new AppointmentCreated($appointment));
 
-    // Notifica o administrador sobre o novo agendamento
-    // Aqui, assumo que o administrador tenha a role 'admin'
-    $admin = User::where('role', 'admin')->first(); // ou ajuste a lógica para encontrar o administrador
-    if ($admin) {
-        $admin->notify(new AppointmentCreated($appointment));
-    }
+// Notifica o administrador sobre o novo agendamento
+$admin = User::where('role', 'admin')->first();
+if ($admin) {
+    $admin->notify(new AppointmentCreated($appointment));
+}
+
 
     return redirect()->route('appointments.index')->with('success', 'Agendamento criado com sucesso!');
 }
+
+public function getAvailableTimes(Request $request)
+{
+    // Verifica se a data foi fornecida
+    if (!$request->has('date')) {
+        return response()->json(['availableTimes' => []]);
+    }
+
+    // Horários disponíveis para agendamento
+    $allTimes = [
+        '08:00', '09:00', '10:00', '11:00', '12:00',
+        '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
+    ];
+
+    // Busca horários já reservados para a data fornecida
+    $reservedTimes = Appointment::where('appointment_date', $request->date)
+        ->pluck('appointment_time')
+        ->toArray();
+
+    // Calcula os horários disponíveis
+    $availableTimes = array_diff($allTimes, $reservedTimes);
+
+    return response()->json(['availableTimes' => $availableTimes]);
+}
+
+
+
     public function destroy(Appointment $appointment)
     {
         // Verifica se o usuário tem permissão para deletar o agendamento

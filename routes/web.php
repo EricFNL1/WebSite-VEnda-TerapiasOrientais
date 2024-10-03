@@ -40,6 +40,10 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+// web.php
+Route::get('/appointments/available-times', [AppointmentController::class, 'getAvailableTimes']);
+
+
 // Rotas para o painel do administrador
 // Rotas para o painel do administrador
 Route::middleware(['auth'])->group(function () {
@@ -92,3 +96,6 @@ Route::get('/admin/settings', [AdminController::class, 'getSettings'])->name('ad
 // Rota para atualizar a cor da navbar
 Route::post('/admin/update-nav-color', [AdminController::class, 'updateNavColor'])->name('admin.updateNavColor');
 
+
+// web.php
+Route::get('/appointments/available-times', [AppointmentController::class, 'getAvailableTimes']);
